@@ -12,7 +12,7 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "visp",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
@@ -98,5 +98,9 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "145b186e-e8fd-43eb-bb20-fda39b87f6eb",
+    "packageManager": "npm"
   }
 }

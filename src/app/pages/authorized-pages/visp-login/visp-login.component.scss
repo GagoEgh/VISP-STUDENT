@@ -1,0 +1,111 @@
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .login-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding-top: 100px;
+
+    @media (max-width: 426px) {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .login-wrapper__image {
+      width: 45%;
+      .login-wrapper__img {
+        width: 100%;
+      }
+
+      @media (max-width: 426px) {
+        width: 100%;
+      }
+    }
+
+    .login-wrapper__form {
+      width: 35%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: var(--color-natural-gray);
+      gap: 56px;
+      height: 495px;
+
+      .login-wrapper__title {
+        font-size: 24px;
+      }
+
+      @media (max-width: 426px) {
+        width: 75%;
+      }
+
+      .login-wrapper__form-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 45px;
+        position: relative;
+
+        .login-wrapper__input,
+        .login-wrapper__button {
+          padding: 25px;
+          border: none;
+          border-radius: 15px;
+
+          &::placeholder {
+            color: var(--color-silver);
+          }
+
+          @media (max-width: 1025px) {
+            padding: 15px;
+            border-radius: 8px;
+          }
+        }
+
+        .login-wrapper__icon-eye {
+          position: absolute;
+          left: 90%;
+          top: 45%;
+          cursor: pointer;
+        }
+
+        .login-wrapper__button {
+          cursor: pointer;
+          background-color: var(--color-dark-red);
+          color: var(--color-white);
+          font-size: 32px;
+          letter-spacing: 2px;
+          padding: 15px 0;
+
+          @media (max-width: 1025px) {
+            padding: 8px 0;
+          }
+        }
+
+        visp-arrow-right-icon {
+          position: absolute;
+          left: 85%;
+          top: 85%;
+          width: 45px;
+
+          @media (max-width: 426px) {
+            width: 35px;
+          }
+        }
+      }
+    }
+  }
+
+  .login-copy {
+    .login-copy-par {
+      text-align: center;
+      color: var(--color-natural-gray);
+    }
+  }
+}
