@@ -2,7 +2,6 @@ import { Component, inject } from '@angular/core';
 import { ArrowRightIcon } from '../../../common/ui/arrow-right-icon';
 import { VisibilityIcon } from '../../../common/ui/visibility-icon';
 import {
-  FormControl,
   FormGroup,
   NonNullableFormBuilder,
   ReactiveFormsModule,
