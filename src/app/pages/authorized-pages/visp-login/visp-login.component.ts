@@ -2,29 +2,25 @@ import { Component, inject } from '@angular/core';
 import { ArrowRightIcon } from '../../../common/ui/arrow-right-icon';
 import { VisibilityIcon } from '../../../common/ui/visibility-icon';
 import {
-  FormControl,
   FormGroup,
   NonNullableFormBuilder,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
 import { onlyNumbersValidators } from '../../../core/config/only-numbers-validator';
-
-interface LoginForm {
-  registerNumber: FormControl<string>;
-  email: FormControl<string>;
-}
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-visp-login',
   standalone: true,
-  imports: [ArrowRightIcon, VisibilityIcon, ReactiveFormsModule],
+  imports: [ArrowRightIcon, VisibilityIcon, ReactiveFormsModule,RouterOutlet, RouterLink],
   templateUrl: './visp-login.component.html',
   styleUrl: './visp-login.component.scss',
 })
-export class VispLoginComponent {
+export class LoginComponent {
   private readonly fb = inject(NonNullableFormBuilder);
-  loginForm: FormGroup<LoginForm>;
+  private readonly router = inject(Router)
+  loginForm: FormGroup;
   crossed = true;
 
   constructor() {
@@ -36,18 +32,23 @@ export class VispLoginComponent {
           validators: [Validators.required, onlyNumbersValidators],
         },
       ],
-      email: [
+      password: [
         '',
         {
           nonNullable: true,
-          validators: [Validators.required, Validators.email],
+          validators: [Validators.required],
         },
       ],
     });
   }
 
+  public showErrorMessage(controlName:string,validatorsName:string):boolean{
+    return this.loginForm.controls[controlName].hasError(validatorsName) && this.loginForm.controls[controlName].touched
+  }
+
   public send(): void {
     if (this.loginForm.valid) {
+      this.router.navigate(['home']);
       this.loginForm.reset();
     }
   }
