@@ -1,0 +1,15 @@
+.navigation{
+    width: 100px;
+    height: 100vh;
+    background-color: var(--color-dark-red);
+
+    .navigation-list{
+        margin: 0;
+        list-style: none;
+        border-top: 1px solid var(--color-black);
+
+        & a{
+            text-decoration: none;
+        }
+    }
+}
