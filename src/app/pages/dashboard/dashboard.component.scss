@@ -1,0 +1,40 @@
+.container{
+    height: 124px;
+    width: 100vw;
+    background-color: var(--color-dark-red);
+    display: flex;
+    justify-content: center;
+
+    .header{
+        width: 90vw;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    
+        .header-login{
+            height: 81px;
+        }
+    
+        .header-user{
+            display: flex;
+            width: 200px;
+            justify-content: space-between;
+            align-items: center;
+
+            & img{
+                height: 78px;
+                width: 78px;
+            }
+
+            & p{
+                padding: 0;
+                margin: 0;
+            }
+
+            .header-user__date{
+                color: var(--color-white);
+                font-size: 24px;
+            }
+        }
+    }
+}
