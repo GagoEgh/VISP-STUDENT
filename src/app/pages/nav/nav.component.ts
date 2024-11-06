@@ -9,6 +9,7 @@ import { CreditCardIcon } from '../../common/ui/credit-card-icon';
 import { LiveHelpIcon } from '../../common/ui/live-help-icon';
 import { HomeIcon } from '../../common/ui/home-icon';
 import { ProctorIcon } from '../../common/ui/proctor-icon';
+import { MenuIcon } from '../../common/ui/menu-icon';
 
 @Component({
   selector: 'visp-nav',
@@ -22,16 +23,19 @@ import { ProctorIcon } from '../../common/ui/proctor-icon';
     CreditCardIcon,
     LiveHelpIcon,
     HomeIcon,
+    MenuIcon,
     ProctorIcon],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.scss'
 })
 export class NavComponent {
+  public   isOpen = false;
+  readonly routes = AppRoutes
 
-  routes = AppRoutes
-
-  constructor(){
+  constructor(){}
   
+  public opened():void{
+    this.isOpen = !this.isOpen;
   }
-  
+
 }

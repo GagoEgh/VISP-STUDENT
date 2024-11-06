@@ -1,28 +1,49 @@
 <nav class="navigation">
-    <ul class="navigation-list">
-        <li>
-            <a [routerLink] ='routes.home'><home-icon></home-icon></a>
+    <ul class="navigation-list" [class]="isOpen?'nav-open':'nav-close'">
+        <li class="navigation-list__link">
+            <a class="navigation-list__link-path">
+                <span>Student name</span><visp-menu-icon class="open-close"(click)="opened()"></visp-menu-icon>
+            </a>
         </li>
-        <li>
-            <a [routerLink] ='routes.educational'><exclamation-icon></exclamation-icon></a>
+       
+        <li class="navigation-list__link">
+            <a [routerLink] ='routes.home' class="navigation-list__link-path">
+                <span>{{routes.home}}</span><home-icon></home-icon>
+            </a>
         </li>
-        <li>
-            <a [routerLink] ='routes.family'><school-icon></school-icon></a>
+        <li class="navigation-list__link">
+            <a [routerLink] ='routes.educational' class="navigation-list__link-path">
+                <span>{{routes.educational}}</span><exclamation-icon></exclamation-icon>
+            </a>
         </li>
-        <li>
-            <a [routerLink] ='routes.grades'><event-note-icon></event-note-icon></a>
+        <li class="navigation-list__link">
+            <a [routerLink] ='routes.family' class="navigation-list__link-path">
+                <span>{{routes.family}}</span><school-icon></school-icon></a>
         </li>
-        <li>
-            <a [routerLink] ='routes.hostel'><credit-card-icon></credit-card-icon></a>
+        <li class="navigation-list__link">
+            <a [routerLink] ='routes.grades' class="navigation-list__link-path">
+                <span>{{routes.grades}}</span><event-note-icon></event-note-icon>
+            </a>
         </li>
-        <li>
-            <a [routerLink] ='routes.issues'><live-help-icon></live-help-icon></a>
+        <li class="navigation-list__link">
+            <a [routerLink] ='routes.hostel' class="navigation-list__link-path">
+                <span>{{routes.hostel}}</span><credit-card-icon></credit-card-icon>
+            </a>
         </li>
-        <li>
-            <a [routerLink] ='routes.personalInfo'><account-box-icon></account-box-icon></a>
+        <li class="navigation-list__link">
+            <a [routerLink] ='routes.issues' class="navigation-list__link-path">
+                <span>{{routes.issues}}</span><live-help-icon></live-help-icon>
+            </a>
         </li>
-        <li>
-            <a [routerLink] ='routes.proctor'><proctor-icon></proctor-icon></a>
+        <li class="navigation-list__link">
+            <a [routerLink] ='routes.personalInfo' class="navigation-list__link-path">
+                <span>{{routes.personalInfo}}</span> <account-box-icon></account-box-icon>
+            </a>
+        </li>
+        <li class="navigation-list__link">
+            <a [routerLink] ='routes.proctor' class="navigation-list__link-path">
+                <span>{{routes.proctor}}</span> <proctor-icon></proctor-icon>
+            </a>
         </li>
     </ul>
 </nav>
