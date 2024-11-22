@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 @Component({
   selector: 'visp-home',
@@ -8,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+ public weekday = signal<string[]>(['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']);
+
+ openSelect(event:any){
+  console.log(event.target)
+ }
 
 }

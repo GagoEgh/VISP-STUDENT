@@ -1,1 +1,28 @@
-<p>home works!</p>
+<div class="home">
+    <header class="home-title">
+        <h1>Dashboard</h1>
+    </header>
+    <section class="home-dashboard">
+        <div class="home-dashboard__select-block">
+            <p class="home-dashboard__timetable">Timetable -</p>
+            <select class="home-dashboard__weekday">
+                @for(day of weekday(); track day){
+                    <option [value]="day">{{day}}</option>
+                }
+            </select>
+        </div>
+
+        <ul>
+            <li>09:00 - 10:00 CSE0001</li>
+            <li>10:00 - 11:00 CSE0002 Lab</li>
+            <li>11:00 - 12:00 CSE0002 Lab</li>
+            <li>12:00 - 01:00 CSE0003</li>
+
+            <li>02:00 - 03:00 CSE0001</li>
+            <li>03:00 - 04:00 CSE0002 Lab</li>
+            <li>04:00 - 05:00 CSE0002 Lab</li>
+            <li>05:00 - 06:00 CSE0003</li>
+            
+        </ul>
+    </section>
+</div>

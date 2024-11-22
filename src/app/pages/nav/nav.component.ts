@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AppRoutes } from '../pages-routes';
 import { ExclamationIcon } from '../../common/ui/exclamation-icon';
@@ -29,13 +29,13 @@ import { MenuIcon } from '../../common/ui/menu-icon';
   styleUrl: './nav.component.scss'
 })
 export class NavComponent {
-  public   isOpen = false;
-  readonly routes = AppRoutes
+  public isOpen = signal(false);
+  readonly routes = AppRoutes;
 
-  constructor(){}
-  
-  public opened():void{
-    this.isOpen = !this.isOpen;
+  constructor() {}
+
+  public opened(): void {
+    this.isOpen.update(open => !open);
   }
 
 }

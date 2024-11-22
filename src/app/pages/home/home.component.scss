@@ -1,0 +1,36 @@
+.home{
+    color: var(--color-black);
+    .home-title{
+        font-weight: 800;
+        font-size: 36px;
+    }
+
+    .home-dashboard{
+        .home-dashboard__select-block{
+      
+         
+
+            .home-dashboard__timetable{
+                font-size: 24px;
+                font-weight: 700;
+            }
+
+            .home-dashboard__weekday{
+                border: none;
+                padding: 5px;
+                font-size: 24px;
+                font-weight: 700;
+                background-color: var(--color-light-gray);
+                width: 290px;
+                border: 1px solid;
+    
+                &:focus{
+                    outline: none;
+                }
+             
+            }
+        }
+      
+       
+    }
+}
