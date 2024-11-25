@@ -1,20 +1,20 @@
 .home{
     color: var(--color-black);
-    .home-title{
+    .home__header{
         font-weight: 800;
         font-size: 36px;
     }
 
-    .home-dashboard{
-        .home-dashboard__select-block{
+    .home__dashboard{
+        .home__select-block{
             display: flex;
 
-            .home-dashboard__timetable{
+            .home__timetable{
                 font-size: 24px;
                 font-weight: 700;
             }
 
-            .home-dashboard__weekday{
+            .home__weekday-selector{
                 border: none;
                 padding: 5px;
                 font-size: 24px;
@@ -29,6 +29,39 @@
             }
         }
       
-       
+        .home__schedule{
+            display: flex;
+            gap:60px;
+   
+            &::after{
+                content: '';
+                position: relative;
+                top:0;
+                right: 55%;
+                width: 1px;
+                height: 115px;
+                background-color: var(--color-natural-gray);
+
+            }
+
+            .home__schedule-list{
+                list-style: none;
+                font-size: 24px;
+                margin: 0;
+                padding: 0;
+
+                .home__schedule-item{
+                    display: flex;
+                    gap: 20px;
+                    letter-spacing: 1px;
+                    line-height: 30px;
+
+                    .home__schedule-item-time{
+
+                    }
+                }
+            }
+        }
+
     }
 }

@@ -1,0 +1,82 @@
+{
+    "schedule":[
+        {
+            "day":"Monday",
+            "lessons":[
+                {"time":"09:00 - 10:00","lesson":"CSE0001"},
+                {"time":"10:00 - 11:00","lesson":"CSE0002 Lab"},
+                {"time":"11:00 - 12:00","lesson":"CSE0002 Lab"},
+                {"time":"12:00 - 01:00","lesson":"CSE0003"},
+                {"time":"02:00 - 03:00","lesson":"CSE0001"},
+                {"time":"03:00 - 04:00","lesson":"CSE0002 Lab"},
+                {"time":"04:00 - 05:00","lesson":"CSE0002 Lab"},
+                {"time":"05:00 - 06:00","lesson":"CSE0003"}
+            ]
+        },
+        {
+            "day":"Tuesday",
+            "lessons":[
+                {"time":"09:00 - 10:00","lesson":"CSE0004"},
+                {"time":"10:00 - 11:00","lesson":"CSE0005 Lab"},
+                {"time":"11:00 - 12:00","lesson":"CSE0002 Lab"},
+                {"time":"12:00 - 01:00","lesson":"CSE0006"},
+                {"time":"02:00 - 03:00","lesson":"CSE0001"},
+                {"time":"03:00 - 04:00","lesson":"CSE0002 Lab"},
+                {"time":"04:00 - 05:00","lesson":"CSE0007 Lab"},
+                {"time":"05:00 - 06:00","lesson":"CSE0008"}
+            ]
+        },
+        {
+            "day":"Wednesday",
+            "lessons":[
+                {"time":"09:00 - 10:00","lesson":"CSE0009"},
+                {"time":"10:00 - 11:00","lesson":"CSE0005 Lab"},
+                {"time":"11:00 - 12:00","lesson":"CSE00010 Lab"},
+                {"time":"12:00 - 01:00","lesson":"CSE00011"},
+                {"time":"02:00 - 03:00","lesson":"CSE00012"},
+                {"time":"03:00 - 04:00","lesson":"CSE00012 Lab"},
+                {"time":"04:00 - 05:00","lesson":"CSE0007 Lab"},
+                {"time":"05:00 - 06:00","lesson":"CSE00013"}
+            ]
+        },
+        {
+            "day":"Thursday",
+            "lessons":[
+                {"time":"09:00 - 10:00","lesson":"CSE00014"},
+                {"time":"10:00 - 11:00","lesson":"CSE00015 Lab"},
+                {"time":"11:00 - 12:00","lesson":"CSE00010 Lab"},
+                {"time":"12:00 - 01:00","lesson":"CSE00011"},
+                {"time":"02:00 - 03:00","lesson":"CSE00015"},
+                {"time":"03:00 - 04:00","lesson":"CSE00016 Lab"},
+                {"time":"04:00 - 05:00","lesson":"CSE00017 Lab"},
+                {"time":"05:00 - 06:00","lesson":"CSE00013"}
+            ]
+        },
+        {
+            "day":"Friday",
+            "lessons":[
+                {"time":"09:00 - 10:00","lesson":"CSE00018"},
+                {"time":"10:00 - 11:00","lesson":"CSE00019 Lab"},
+                {"time":"11:00 - 12:00","lesson":"CSE00010 Lab"},
+                {"time":"12:00 - 01:00","lesson":"CSE00020"},
+                {"time":"02:00 - 03:00","lesson":"CSE00015"},
+                {"time":"03:00 - 04:00","lesson":"CSE00021 Lab"},
+                {"time":"04:00 - 05:00","lesson":"CSE00022 Lab"},
+                {"time":"05:00 - 06:00","lesson":"CSE00023"}
+            ]
+        },
+        {
+            "day":"Saturday",
+            "lessons":[
+                {"time":"09:00 - 10:00","lesson":"CSE00014"},
+                {"time":"10:00 - 11:00","lesson":"CSE00015 Lab"},
+                {"time":"11:00 - 12:00","lesson":"CSE00010 Lab"},
+                {"time":"12:00 - 01:00","lesson":"CSE00011"},
+                {"time":"02:00 - 03:00","lesson":"CSE00015"},
+                {"time":"03:00 - 04:00","lesson":"CSE00016 Lab"},
+                {"time":"04:00 - 05:00","lesson":"CSE00017 Lab"},
+                {"time":"05:00 - 06:00","lesson":"CSE00013"}
+            ]
+        }
+    ]
+}

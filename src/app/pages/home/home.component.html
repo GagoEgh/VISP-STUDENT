@@ -1,29 +1,40 @@
 <div class="home">
-    <header class="home-title">
-        <h1>Dashboard</h1>
+    <header class="home__header">
+        <h1 class="home__title">Dashboard</h1>
     </header>
-    <section class="home-dashboard">
-        <div class="home-dashboard__select-block">
-            <p class="home-dashboard__timetable">Timetable -</p>
-            <select class="home-dashboard__weekday">
-                @for(day of weekday(); track day){
-                    <option [value]="day">{{day}}</option>
+    <section class="home__dashboard">
+        <div class="home__select-block">
+            <p class="home__timetable">Timetable -</p>
+            <select class="home__weekday-selector" (change)="getSchedule($event)">
+        
+                @for(day of weekday(); track day) {
+                    <option class="home__weekday-option" [value]="day">{{ day }}</option>
                 }
-
             </select>
         </div>
+        <div class="home__schedule">
 
-        <ul>
-            <li>09:00 - 10:00 CSE0001</li>
-            <li>10:00 - 11:00 CSE0002 Lab</li>
-            <li>11:00 - 12:00 CSE0002 Lab</li>
-            <li>12:00 - 01:00 CSE0003</li>
+            <ul>
+                @for(lesson of  schedule()?.lessons; track lesson.time){
+                    <li class="home__schedule-item">
+                        <span class="home__schedule-item-time">{{lesson.time}}</span>{{lesson.lesson}}
+                    </li>
+                }
+            </ul>
 
-            <li>02:00 - 03:00 CSE0001</li>
-            <li>03:00 - 04:00 CSE0002 Lab</li>
-            <li>04:00 - 05:00 CSE0002 Lab</li>
-            <li>05:00 - 06:00 CSE0003</li>
-            
-        </ul>
+            <!-- <ul class="home__schedule-list">
+                <li class="home__schedule-item" ><span class="home__schedule-item-time">09:00 - 10:00</span>  CSE0001</li>
+                <li class="home__schedule-item"><span class="home__schedule-item-time">10:00 - 11:00</span> CSE0002 Lab</li>
+                <li class="home__schedule-item"><span class="home__schedule-item-time">11:00 - 12:00</span> CSE0002 Lab</li>
+                <li class="home__schedule-item"><span class="home__schedule-item-time">12:00 - 01:00</span> CSE0003</li>
+            </ul>
+            <ul class="home__schedule-list">
+                <li class="home__schedule-item"><span class="home__schedule-item-time">02:00 - 03:00</span> CSE0001</li>
+                <li class="home__schedule-item"><span class="home__schedule-item-time">03:00 - 04:00</span> CSE0002 Lab</li>
+                <li class="home__schedule-item"><span class="home__schedule-item-time">04:00 - 05:00</span> CSE0002 Lab</li>
+                <li class="home__schedule-item"><span class="home__schedule-item-time">05:00 - 06:00</span> CSE0003</li>
+            </ul> -->
+        </div>
     </section>
 </div>
+
