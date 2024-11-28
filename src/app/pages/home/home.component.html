@@ -14,26 +14,13 @@
         </div>
         <div class="home__schedule">
 
-            <ul>
+            <ul class="home__schedule-list">
                 @for(lesson of  schedule()?.lessons; track lesson.time){
                     <li class="home__schedule-item">
                         <span class="home__schedule-item-time">{{lesson.time}}</span>{{lesson.lesson}}
                     </li>
                 }
             </ul>
-
-            <!-- <ul class="home__schedule-list">
-                <li class="home__schedule-item" ><span class="home__schedule-item-time">09:00 - 10:00</span>  CSE0001</li>
-                <li class="home__schedule-item"><span class="home__schedule-item-time">10:00 - 11:00</span> CSE0002 Lab</li>
-                <li class="home__schedule-item"><span class="home__schedule-item-time">11:00 - 12:00</span> CSE0002 Lab</li>
-                <li class="home__schedule-item"><span class="home__schedule-item-time">12:00 - 01:00</span> CSE0003</li>
-            </ul>
-            <ul class="home__schedule-list">
-                <li class="home__schedule-item"><span class="home__schedule-item-time">02:00 - 03:00</span> CSE0001</li>
-                <li class="home__schedule-item"><span class="home__schedule-item-time">03:00 - 04:00</span> CSE0002 Lab</li>
-                <li class="home__schedule-item"><span class="home__schedule-item-time">04:00 - 05:00</span> CSE0002 Lab</li>
-                <li class="home__schedule-item"><span class="home__schedule-item-time">05:00 - 06:00</span> CSE0003</li>
-            </ul> -->
         </div>
     </section>
 </div>

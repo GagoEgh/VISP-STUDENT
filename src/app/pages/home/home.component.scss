@@ -37,7 +37,7 @@
                 content: '';
                 position: relative;
                 top:0;
-                right: 55%;
+                right: 57%;
                 width: 1px;
                 height: 115px;
                 background-color: var(--color-natural-gray);
@@ -49,15 +49,32 @@
                 font-size: 24px;
                 margin: 0;
                 padding: 0;
-
+                width: 700px;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+              
                 .home__schedule-item{
-                    display: flex;
                     gap: 20px;
                     letter-spacing: 1px;
                     line-height: 30px;
 
-                    .home__schedule-item-time{
+                    &:nth-child(5) {
+                        grid-column: 2/3;
+                        grid-row: 1/2;
+                    }
+                    
+                    &:nth-child(6) {
+                        grid-column: 2/3;
+                        grid-row: 2/3;
+                    }
 
+                    &:nth-child(7) {
+                        grid-column: 2/3;
+                        grid-row: 3/4;
+                    }
+
+                    .home__schedule-item-time{
+                        padding-right: 10px;
                     }
                 }
             }

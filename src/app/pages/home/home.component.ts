@@ -1,7 +1,6 @@
-import { Component, EnvironmentInjector, inject, runInInjectionContext, signal} from '@angular/core';
+import { Component, EnvironmentInjector, inject, runInInjectionContext} from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ApiService } from '../../core/api-config/api-service';
-import { Schedule } from '../../core/types/schedule.interface';
 
 @Component({
   selector: 'visp-home',
@@ -19,7 +18,6 @@ export class HomeComponent{
 
   public getSchedule(ev:Event){
     const day:string = (ev.target as HTMLSelectElement).value; 
-    // this.schedule = toSignal( this.apiService.getSchedule(day))
     runInInjectionContext(this.environmentInjector, () => {
       this.apiService = inject(ApiService);
       this.schedule = toSignal( this.apiService.getSchedule(day))
