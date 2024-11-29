@@ -3,7 +3,7 @@ import { inject, Injectable } from "@angular/core";
 import { map, Observable } from "rxjs";
 import { HomePageDate } from "../types/homePage.interface";
 import { HomeSchedule} from "../types/schedule.interface";
-
+import { Attendance, AttendanceResponse } from "../types/attendance.interface";
 
 
 @Injectable({
@@ -14,16 +14,20 @@ export class ApiService{
 
     public getWeekday():Observable<string[]>{
         return this.http.get<HomePageDate>('json/home.json')
-        .pipe(map((res)=>{
-          return res.Home.days
-        }))
+        .pipe(map((res)=>res.Home.days))
     }
 
     public getSchedule(day="Monday"){
         return this.http.get<HomeSchedule>('json/schedule.json')
-        .pipe(map((res:HomeSchedule)=>{
-            return res.schedule.find((lesson)=>lesson.day === day)
-          }))
+        .pipe(map((res:HomeSchedule)=> res.schedule.find((lesson)=>lesson.day === day)))
+    }
+
+    public getAttendance():Observable<AttendanceResponse>{
+        return this.http.get<AttendanceResponse>('json/attendance.json')
+        .pipe(map((subject:AttendanceResponse)=>{
+            console.log('subject',subject)
+            return subject
+        }))
     }
 
 }

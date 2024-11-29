@@ -14,7 +14,8 @@ export class HomeComponent{
   private environmentInjector = inject(EnvironmentInjector);
   private apiService = inject(ApiService);
   public weekday = toSignal(this.apiService.getWeekday());
-  public schedule = toSignal( this.apiService.getSchedule())
+  public schedule = toSignal( this.apiService.getSchedule());
+  public attendance = toSignal(this.apiService.getAttendance())
 
   public getSchedule(ev:Event){
     const day:string = (ev.target as HTMLSelectElement).value; 
@@ -24,5 +25,3 @@ export class HomeComponent{
     });
   }
 }
-
-

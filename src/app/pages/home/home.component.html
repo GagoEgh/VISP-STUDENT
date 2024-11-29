@@ -4,9 +4,8 @@
     </header>
     <section class="home__dashboard">
         <div class="home__select-block">
-            <p class="home__timetable">Timetable -</p>
+            <p class="home__subtitle">Timetable -</p>
             <select class="home__weekday-selector" (change)="getSchedule($event)">
-        
                 @for(day of weekday(); track day) {
                     <option class="home__weekday-option" [value]="day">{{ day }}</option>
                 }
@@ -22,6 +21,18 @@
                 }
             </ul>
         </div>
+    </section>
+    <section class="home__attendance">
+        <p class="home__subtitle">Attendance</p>
+        <ul class="home__attendance-list">
+            @for(subject of attendance()?.attendance; track subject.subject){
+                <li class="home__attendance-item">
+                   <p class="item--name">{{subject.subject}}</p>
+                   <div [style.width]="subject.percent" class="home__attendance-percent"></div>
+                     <!-- <span class="home__attendance-percent" [style.width]="subject.percent">{{subject.percent}}</span> -->
+                </li>
+            }
+        </ul>
     </section>
 </div>
 

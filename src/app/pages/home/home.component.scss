@@ -1,3 +1,5 @@
+@import "../../../../public/style/mixin.scss";
+
 .home{
     color: var(--color-black);
     .home__header{
@@ -5,14 +7,14 @@
         font-size: 36px;
     }
 
+    .home__subtitle{
+        font-size: 24px;
+        font-weight: 700;
+    }
+
     .home__dashboard{
         .home__select-block{
             display: flex;
-
-            .home__timetable{
-                font-size: 24px;
-                font-weight: 700;
-            }
 
             .home__weekday-selector{
                 border: none;
@@ -45,13 +47,7 @@
             }
 
             .home__schedule-list{
-                list-style: none;
-                font-size: 24px;
-                margin: 0;
-                padding: 0;
-                width: 700px;
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
+                @include list(24px);
               
                 .home__schedule-item{
                     gap: 20px;
@@ -80,5 +76,32 @@
             }
         }
 
+    }
+
+    .home__attendance{
+        .home__attendance-list{
+            @include list(24px);
+            
+            .home__attendance-item{
+                display: flex;
+                gap: 24px;
+
+                .item--name{
+                    width: 156px;
+                    display: block;
+                    margin: 0;
+                    padding: 5px;
+                }
+
+                .home__attendance-percent{
+                    display: inline-block;
+                    height: 10px;
+                    border-radius: 5px;
+                    background-color: var(--color-wine-red);
+                    align-self: center;
+                
+                }
+            }
+        }
     }
 }
