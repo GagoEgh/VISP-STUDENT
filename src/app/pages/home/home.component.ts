@@ -15,7 +15,8 @@ export class HomeComponent{
   private apiService = inject(ApiService);
   public weekday = toSignal(this.apiService.getWeekday());
   public schedule = toSignal( this.apiService.getSchedule());
-  public attendance = toSignal(this.apiService.getAttendance())
+  public attendance = toSignal(this.apiService.getAttendance());
+  public grades = toSignal(this.apiService.getGrades())
 
   public getSchedule(ev:Event){
     const day:string = (ev.target as HTMLSelectElement).value; 

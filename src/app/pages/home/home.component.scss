@@ -2,6 +2,10 @@
 
 .home{
     color: var(--color-black);
+    display: flex;
+    flex-direction: column;
+    gap: 74px;
+
     .home__header{
 
         .home__title{
@@ -55,7 +59,6 @@
 
             .home__schedule-list{
                 @include list(18px);
-              
                 .home__schedule-item{
                     gap: 20px;
                     letter-spacing: 1px;
@@ -113,6 +116,38 @@
                     background-color: var(--color-wine-red);
                     align-self: center;
                 
+                }
+            }
+        }
+    }
+
+    .home__grades{
+
+        .home__grades__container{
+            display: flex;
+            gap:40px;
+        
+            .home__grades-list{
+                background-color: var(--color-white);
+                border-radius: 15px;
+                padding: 15px 30px;
+                text-align: center;
+
+                .home__grades-item-sumary{
+                    color: var(--color-wine-red);
+                    font-weight: bold;
+                    font-size: 30px;
+                    margin: 0;
+                }
+
+                .home__grades-item-credit{
+                    color: var(--color-natural-gray);
+                    font-size: 18px;
+                }
+
+                .home__grades-item-sem{
+                    color: var(--color-natural-gray);
+                    font-size: 20px;
                 }
             }
         }

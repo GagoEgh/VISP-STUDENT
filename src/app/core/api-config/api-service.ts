@@ -4,6 +4,7 @@ import { map, Observable } from "rxjs";
 import { HomePageDate } from "../types/homePage.interface";
 import { HomeSchedule} from "../types/schedule.interface";
 import { Attendance, AttendanceResponse } from "../types/attendance.interface";
+import { Grades } from "../types/grades.interface";
 
 
 @Injectable({
@@ -24,9 +25,11 @@ export class ApiService{
 
     public getAttendance():Observable<AttendanceResponse>{
         return this.http.get<AttendanceResponse>('json/attendance.json')
-        .pipe(map((subject:AttendanceResponse)=>{
-            return subject
-        }))
+        .pipe(map((subject:AttendanceResponse)=> subject))
     }
 
+    public getGrades():Observable<Grades>{
+        return this.http.get<Grades>('json/grades.json')
+        .pipe(map((grades:Grades)=> grades))
+    }
 }

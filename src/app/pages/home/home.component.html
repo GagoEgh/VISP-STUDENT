@@ -33,5 +33,17 @@
             }
         </ul>
     </section>
+    <section class="home__grades">
+        <p class="home__subtitle attendance">Grades</p>
+        <div class="home__grades__container">
+            @for(grade of grades()?.grades; track grade.credits){
+                <div class="home__grades-list">
+                    <p class="home__grades-item-sumary">{{grade.grade}}</p>
+                    <p class="home__grades-item-credit">Credits: {{grade.credits}}</p>
+                    <p class="home__grades-item-sem">{{grade.rating}} Sem {{grade.sem}}</p>
+                </div>
+            }
+        </div>
+    </section>
 </div>
 

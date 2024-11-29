@@ -1,0 +1,22 @@
+{
+    "grades":[
+        {
+            "credits":"20",
+            "sem":"19-20",
+            "grade":"8.95",
+            "rating":"Fall"
+        },
+        {
+            "credits":"18",
+            "sem":"19-20",
+            "grade":"9.44",
+            "rating":"Sin"
+        },
+        {
+            "credits":"6",
+            "sem":"19-20",
+            "grade":"10.00",
+            "rating":"Sum"
+        }
+    ]
+}
