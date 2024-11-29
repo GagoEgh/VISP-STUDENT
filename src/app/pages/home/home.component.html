@@ -23,13 +23,12 @@
         </div>
     </section>
     <section class="home__attendance">
-        <p class="home__subtitle">Attendance</p>
+        <p class="home__subtitle attendance">Attendance</p>
         <ul class="home__attendance-list">
             @for(subject of attendance()?.attendance; track subject.subject){
                 <li class="home__attendance-item">
                    <p class="item--name">{{subject.subject}}</p>
                    <div [style.width]="subject.percent" class="home__attendance-percent"></div>
-                     <!-- <span class="home__attendance-percent" [style.width]="subject.percent">{{subject.percent}}</span> -->
                 </li>
             }
         </ul>

@@ -25,7 +25,6 @@ export class ApiService{
     public getAttendance():Observable<AttendanceResponse>{
         return this.http.get<AttendanceResponse>('json/attendance.json')
         .pipe(map((subject:AttendanceResponse)=>{
-            console.log('subject',subject)
             return subject
         }))
     }

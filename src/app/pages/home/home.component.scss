@@ -3,12 +3,19 @@
 .home{
     color: var(--color-black);
     .home__header{
-        font-weight: 800;
-        font-size: 36px;
+
+        .home__title{
+            font-weight: 800;
+            font-size: 26px;
+            padding: 0;
+            margin: 0;
+            margin-top: 15px;
+        }
+     
     }
 
     .home__subtitle{
-        font-size: 24px;
+        font-size: 18px;
         font-weight: 700;
     }
 
@@ -19,7 +26,7 @@
             .home__weekday-selector{
                 border: none;
                 padding: 5px;
-                font-size: 24px;
+                font-size: 18px;
                 font-weight: 700;
                 background-color: var(--color-light-gray);
                 cursor: pointer;
@@ -47,7 +54,7 @@
             }
 
             .home__schedule-list{
-                @include list(24px);
+                @include list(18px);
               
                 .home__schedule-item{
                     gap: 20px;
@@ -79,8 +86,14 @@
     }
 
     .home__attendance{
+
+        .attendance{
+            margin-top: 20px;
+            margin-bottom: 5px;
+        }
+        
         .home__attendance-list{
-            @include list(24px);
+            @include list(18px);
             
             .home__attendance-item{
                 display: flex;
