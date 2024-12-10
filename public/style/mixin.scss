@@ -1,9 +1,9 @@
-@mixin list($size){
+@mixin list($size,$width){
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     list-style: none;
     font-size:$size;
     margin: 0;
     padding: 0;
-    width: 700px;
+    width: $width;
 }
