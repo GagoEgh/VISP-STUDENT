@@ -1,8 +1,20 @@
 @import "../../../../public/style/mixin.scss";
+.up{
+   
+    transform: translate(100px, -450px);
+    transition:all 1s ease-in-out;
+}
+
+.down{
+    transform: translate(0, 0px);
+}
 
 .home{
     color: var(--color-black);
     display: flex;
+    @media (max-width: 769px) {
+     flex-direction: column;
+    }
 
     .sections-content{
         display: flex;
@@ -33,6 +45,10 @@
             @media (max-width: 1025px) {
                 margin-bottom: 5px;
                 font-size: 18px;
+            }
+
+            @media (max-width: 769px) {
+                margin-bottom: 19px;
             }
 
         }
@@ -112,6 +128,12 @@
         .home__attendance{
             align-self: flex-start;
             margin-left: 10px;
+
+            @media (max-width: 769px) {
+                align-self: center;
+                margin-right: 78px;
+                margin-left: 0;
+            }
             
             .attendance{
                 margin-top: 0;
@@ -150,6 +172,10 @@
     
         .home__grades{
             align-self: baseline;
+            @media (max-width: 1025px) {
+                align-self: center;
+                margin-right: 118px;
+            }
 
             .home__grades__container{
                 display: flex;

@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AppRoutes } from '../pages-routes';
 import { ExclamationIcon } from '../../common/ui/exclamation-icon';
@@ -10,6 +10,7 @@ import { LiveHelpIcon } from '../../common/ui/live-help-icon';
 import { HomeIcon } from '../../common/ui/home-icon';
 import { ProctorIcon } from '../../common/ui/proctor-icon';
 import { MenuIcon } from '../../common/ui/menu-icon';
+import { FromStyleService } from '../../core/services/fromStyleService';
 
 @Component({
   selector: 'visp-nav',
@@ -29,6 +30,7 @@ import { MenuIcon } from '../../common/ui/menu-icon';
   styleUrl: './nav.component.scss'
 })
 export class NavComponent {
+  private fromStyleService = inject(FromStyleService);
   public isOpen = signal(false);
   readonly routes = AppRoutes;
 
@@ -36,6 +38,7 @@ export class NavComponent {
 
   public opened(): void {
     this.isOpen.update(open => !open);
+    this.fromStyleService.updateIsOpen(this.isOpen());
   }
 
 }

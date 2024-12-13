@@ -3,7 +3,7 @@ import { inject, Injectable } from "@angular/core";
 import { map, Observable } from "rxjs";
 import { HomePageDate } from "../types/homePage.interface";
 import { HomeSchedule} from "../types/schedule.interface";
-import { Attendance, AttendanceResponse } from "../types/attendance.interface";
+import { AttendanceResponse } from "../types/attendance.interface";
 import { Grades } from "../types/grades.interface";
 
 
