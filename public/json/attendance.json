@@ -1,0 +1,37 @@
+{
+    "attendance":[
+        {
+            "subject": "CSE00013",
+            "percent": "23%"
+        },
+        {
+            "subject": "CSE00017 Lab",
+            "percent": "24%"
+        },
+        {
+            "subject": "CSE00016 Lab",
+            "percent": "15%"
+        },
+        {
+            "subject": "CSE00015",
+            "percent": "30%"
+        },
+        {
+            "subject": "CSE00011",
+            "percent": "32%"
+        },
+        {
+            "subject": "CSE00010 Lab",
+            "percent": "20%"
+        },
+        {
+            "subject": "CSE00015 Lab",
+            "percent": "28%"
+        },
+        {
+            "subject": "CSE00014",
+            "percent": "22%"
+        }
+    ]
+}
+

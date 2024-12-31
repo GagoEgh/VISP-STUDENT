@@ -1,0 +1,273 @@
+@import "../../../../public/style/mixin.scss";
+
+:host{
+    
+    @media (max-width: 769px) {
+        display: flex;
+        justify-content: center;
+    } 
+
+}
+.up{
+
+    @media (max-width: 769px) {
+        transform: translate(0px, -450px);
+        transition:all 1s ease-in-out;
+    }
+}
+
+.down{
+
+    @media (max-width: 769px) {
+        transform: translate(0, 0px);
+    }
+   
+}
+
+.home{
+    color: var(--color-black);
+    display: flex;
+    @media (max-width: 769px) {
+     flex-direction: column;
+     width: 80%;
+    }
+
+    .sections-content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+
+        @media (max-width: 426px) {
+            align-items: normal;
+        }
+       
+        .home__header{
+            width: 100%;
+
+            @media (max-width: 769px) {
+                width: 90%;
+                align-self: end;
+            }
+           
+            .home__title{
+                font-weight: 800;
+                font-size: 26px;
+                padding: 0;
+                margin: 0;
+                margin-top: 15px;
+
+                @media (max-width: 1025px) {
+                    font-size: 22px;
+                    text-align: center;
+                }
+            }
+        }
+    
+        .home__subtitle{
+            font-size: 25px;
+            font-weight: 700;
+
+            @media (max-width: 1025px) {
+                margin-bottom: 19px;
+                font-size: 18px;
+            }
+
+        }
+    
+        .home__dashboard{
+           
+            @media (max-width: 1025px) {
+                margin-left: 10px;
+            }
+
+            .home__select-block{
+                display: flex;
+
+                @media (max-width: 426px) {
+                    align-items: normal;
+                }
+    
+                .home__weekday-selector{
+                    border: none;
+                    padding: 5px;
+                    font-size: 18px;
+                    font-weight: 700;
+                    background-color: var(--color-light-gray);
+                    cursor: pointer;
+        
+                    &:focus{
+                        outline: none;
+                    }
+                 
+                }
+            }
+          
+            .home__schedule{
+                display: flex;
+                gap:60px;
+       
+                &::after{
+                    content: '';
+                    position: relative;
+                    top:0;
+                    right: 57%;
+                    width: 1px;
+                    height: 115px;
+                    background-color: var(--color-natural-gray);
+                }
+    
+                .home__schedule-list{
+                    @include list(18px,700px);
+                    @media (max-width: 1025px) {
+                        @include list(15px,450px);
+                    }
+                    
+                    .home__schedule-item{
+                        gap: 20px;
+                        letter-spacing: 1px;
+    
+                        &:nth-child(5) {
+                            grid-column: 2/3;
+                            grid-row: 1/2;
+                        }
+                        
+                        &:nth-child(6) {
+                            grid-column: 2/3;
+                            grid-row: 2/3;
+                        }
+    
+                        &:nth-child(7) {
+                            grid-column: 2/3;
+                            grid-row: 3/4;
+                        }
+    
+                        .home__schedule-item-time{
+                            padding-right: 10px;
+                        }
+                    }
+                }
+            }
+    
+        }
+    
+        .home__attendance{
+            align-self: flex-start;
+            margin-left: 10px;
+
+            @media (max-width: 769px) {
+                align-self: center;
+                margin-right: 78px;
+                margin-left: 0;
+            }
+            
+            .attendance{
+                margin-top: 0;
+                margin-bottom: 5px;
+            }
+            
+            .home__attendance-list{
+                @include list(18px,700px);
+                @media (max-width: 1025px) {
+                    @include list(15px,450px);
+                }
+                
+                
+                .home__attendance-item{
+                    display: flex;
+                    gap: 24px;
+    
+                    .item--name{
+                        width: 156px;
+                        display: block;
+                        margin: 0;
+                        padding: 3px;
+                    }
+    
+                    .home__attendance-percent{
+                        display: inline-block;
+                        height: 10px;
+                        border-radius: 5px;
+                        background-color: var(--color-wine-red);
+                        align-self: center;
+                    
+                    }
+                }
+            }
+        }
+    
+        .home__grades{
+            align-self: baseline;
+            @media (max-width: 1025px) {
+                align-self: center;
+                margin-right: 118px;
+            }
+
+            .home__grades__container{
+                display: flex;
+                gap:40px;
+            
+                .home__grades-list{
+                    background-color: var(--color-white);
+                    border-radius: 15px;
+                    padding: 20px 15px;
+                    text-align: center;
+
+                    @media (max-width: 1025px) {
+                        padding: 15px 10px;
+                    }
+
+    
+                    .home__grades-item-sumary{
+                        color: var(--color-wine-red);
+                        font-weight: bold;
+                        font-size: 20px;
+                        margin: 0;
+              
+                    }
+    
+                    .home__grades-item-credit{
+                        color: var(--color-natural-gray);
+                        font-size: 14px;
+                        margin: 0;
+       
+                    }
+    
+                    .home__grades-item-sem{
+                        color: var(--color-natural-gray);
+                        font-size: 15px;
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    
+    }
+
+    .notifiaction{
+        height: calc(100vh - 135px);
+        background-color: var(--color-silver);
+        border-radius: 10px;
+        margin-top: 10px;
+
+        .notifiaction-title{
+            margin: 0;
+            padding: 15px;
+            color:var(--color-white);
+        }
+
+        .notifiaction-list{
+            list-style: none;
+            padding-bottom: 5px;
+            border-bottom: 1px solid var(--color-light-gray);;
+            .notifiaction-list_text{
+                p{
+                    margin: 0;
+                    padding: 2px;
+                    color: var(--color-light-gray);
+                }
+            }
+        }
+
+    }
+}

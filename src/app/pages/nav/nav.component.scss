@@ -20,7 +20,7 @@
 
         .navigation-list__link{
             cursor: pointer;
-            padding: 15px;
+            padding: 12px;
             width: 200px;
             border-bottom: 1px solid var(--color-wine-red);
 
@@ -53,21 +53,61 @@
 }
 
 .nav-open{
-    transform: translate(0);
+    transform: translate(-1468px);
     transition:all 1s ease-in-out;
-}
 
-.nav-close{
-    transform: translate(-185px);
-    transition:all 0.5s ease-in-out;
+    @media (max-width: 1536px) {
+        transform: translate(-450px);
+        transition:all 0.5s ease-in-out;
+    }
+
+    @media (max-width: 1441px) {
+        transform: translate(-360px);
+        transition:all 0.5s ease-in-out;
+    }
+
+    @media (max-width: 1025px) {
+        transform: translate(-180px);
+        transition:all 0.5s ease-in-out;
+    }
 
     @media (max-width: 769px) {
-        transform: translate(-92%);
-        transition:all 1s ease-in-out;
+        transform: translate(-710px);
+        transition:all 0.5s ease-in-out;
     }
 
     @media (max-width: 426px) {
-        transform: translate(-82%);
+        transform: translate(-87%);
+        transition:all 1s ease-in-out;
+    }
+}
+
+.nav-close{
+    transform: translate(-1315px);
+    transition:all 0.5s ease-in-out;
+
+    @media (max-width: 1536px) {
+        transform: translate(-278px);
+        transition:all 0.5s ease-in-out;
+    }
+
+    @media (max-width: 1441px) {
+        transform: translate(-196px);
+        transition:all 0.5s ease-in-out;
+    }
+
+    @media (max-width: 1025px) {
+        transform: translate(-5px);
+        transition:all 0.5s ease-in-out;
+    }
+
+    @media (max-width: 769px) {
+        transform: translate(0px);
+        transition:all 0.5s ease-in-out;
+    }
+
+    @media (max-width: 426px) {
+        transform: translate(0);
         transition:all 1s ease-in-out;
     }
     

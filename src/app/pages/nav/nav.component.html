@@ -1,5 +1,5 @@
 <nav class="navigation">
-    <ul class="navigation-list" [class]="isOpen?'nav-open':'nav-close'">
+    <ul class="navigation-list" [class]="isOpen()?'nav-open':'nav-close'">
         <li class="navigation-list__link">
             <a class="navigation-list__link-path">
                 <span>Student name</span><visp-menu-icon class="open-close"(click)="opened()"></visp-menu-icon>

@@ -1,1 +1,61 @@
-<p>home works!</p>
+<div class="home"  [class]="isOpen()?'up':'down'">
+    <div class="sections-content">
+        <header class="home__header">
+            <h1 class="home__title">Dashboard</h1>
+        </header>
+        <section class="home__dashboard">
+            <div class="home__select-block">
+                <p class="home__subtitle">Timetable -</p>
+                <select class="home__weekday-selector" (change)="getSchedule($event)">
+                    @for(day of weekday(); track day) {
+                        <option class="home__weekday-option" [value]="day">{{ day }}</option>
+                    }
+                </select>
+            </div>
+            <div class="home__schedule">
+    
+                <ul class="home__schedule-list">
+                    @for(lesson of  schedule()?.lessons; track lesson.time){
+                        <li class="home__schedule-item">
+                            <span class="home__schedule-item-time">{{lesson.time}}</span>{{lesson.lesson}}
+                        </li>
+                    }
+                </ul>
+            </div>
+        </section>
+        <section class="home__attendance">
+            <p class="home__subtitle attendance">Attendance</p>
+            <ul class="home__attendance-list">
+                @for(subject of attendance()?.attendance; track subject.subject){
+                    <li class="home__attendance-item">
+                       <p class="item--name">{{subject.subject}}</p>
+                       <div [style.width]="subject.percent" class="home__attendance-percent"></div>
+                    </li>
+                }
+            </ul>
+        </section>
+        <section class="home__grades">
+            <p class="home__subtitle attendance">Grades</p>
+            <div class="home__grades__container">
+                @for(grade of grades()?.grades; track grade.credits){
+                    <div class="home__grades-list">
+                        <p class="home__grades-item-sumary">{{grade.grade}}</p>
+                        <p class="home__grades-item-credit">Credits: {{grade.credits}}</p>
+                        <p class="home__grades-item-sem">{{grade.rating}} Sem {{grade.sem}}</p>
+                    </div>
+                }
+            </div>
+        </section>
+    </div>
+    <div class="notifiaction">
+        <h2 class="notifiaction-title">Notifications</h2>
+        <ul class="notifiaction-list">
+            <li class="notifiaction-list_text">
+                <p>Course Registration on 03-August</p> 
+                <p>01-Aug-2021</p> 
+            </li>
+        </ul>
+    </div>
+
+</div>
+
