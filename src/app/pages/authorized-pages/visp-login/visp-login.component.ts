@@ -21,8 +21,8 @@ export class LoginComponent {
   private db = inject(DatabaseService);
   private readonly fb = inject(NonNullableFormBuilder);
   private readonly router = inject(Router)
-  loginForm: FormGroup;
-  crossed = true;
+  public loginForm: FormGroup;
+  public crossed = true;
 
   constructor() {
     this.loginForm = this.fb.group({

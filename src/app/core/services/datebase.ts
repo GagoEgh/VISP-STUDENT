@@ -11,7 +11,6 @@ export class DatabaseService {
     constructor() {
         this.ensureDbReady();
     }
-
   
     private async ensureDbReady(): Promise<IDBDatabase> {
         if (this.db) {
@@ -55,6 +54,24 @@ export class DatabaseService {
         return transaction.objectStore('pass');
     }
 
+    private async putPassword(password:string){
+        const store = await this.createPasswordTransaction()
+        const data ={
+            pass:password,
+            id:0
+        }
+        const request = store.put(data);
+        
+        request.onsuccess = () => {
+            console.log('success')
+        };
+
+        request.onerror = () => {
+            console.log('Error')
+        }
+        
+    }
+
     public async getPassword(): Promise<any> {
         const store = await this.createPasswordTransaction();
         return new Promise((resolve, reject) => {
@@ -88,24 +105,6 @@ export class DatabaseService {
                 reject(error);
             }
         });
-    }
-
-    private async putPassword(password:string){
-        const store = await this.createPasswordTransaction()
-        const data ={
-            pass:password,
-            id:0
-        }
-        const request = store.put(data);
-        
-        request.onsuccess = () => {
-            console.log('success')
-        };
-
-        request.onerror = () => {
-            console.log('Error')
-        }
-        
     }
 
     public async addInDb(data: any): Promise<void> {

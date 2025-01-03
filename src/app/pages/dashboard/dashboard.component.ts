@@ -17,11 +17,9 @@ export class DashboardComponent {
 
   constructor(){
 
-
     this.db.getStudent()
     .then((result)=>{
       this.student.set(result)
-      console.log('result',result);
     })
     .catch((erore)=>{
       console.log('eror',erore)
