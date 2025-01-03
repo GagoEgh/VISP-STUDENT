@@ -7,11 +7,9 @@
         <h1 class="login-wrapper__title">Welcome Back</h1>
         <form class="login-wrapper__form-container" [formGroup]="loginForm" (ngSubmit)="send()">
             <div class="login-wrapper__block">
-                <input class="login-wrapper__input" formControlName="registerNumber" type="text" placeholder="Enter Registration Number" />
-                @if(showErrorMessage('registerNumber','required')){
+                <input class="login-wrapper__input" formControlName="name" type="text"  placeholder="Enter name" />
+                @if(showErrorMessage('name','required')){
                     <span class="error">Please complete the field</span>
-                }@else if(showErrorMessage('registerNumber','invalidSymbols')){
-                    <span class="error">Please complete only numbers</span>
                 }
             </div>
             <div class="login-wrapper__block">
