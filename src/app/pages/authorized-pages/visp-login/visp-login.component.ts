@@ -7,8 +7,9 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { onlyNumbersValidators } from '../../../core/config/only-numbers-validator';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { DatabaseService } from '../../../core/services/datebase';
+import { StudentItnerface } from '../../../core/types/student.interface';
 
 @Component({
   selector: 'app-visp-login',
@@ -18,20 +19,14 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
   styleUrl: './visp-login.component.scss',
 })
 export class LoginComponent {
+  private db = inject(DatabaseService);
   private readonly fb = inject(NonNullableFormBuilder);
   private readonly router = inject(Router)
-  loginForm: FormGroup;
-  crossed = true;
+  public loginForm: FormGroup;
+  public crossed = true;
 
   constructor() {
     this.loginForm = this.fb.group({
-      registerNumber: [
-        '',
-        {
-          nonNullable: true,
-          validators: [Validators.required, onlyNumbersValidators],
-        },
-      ],
       password: [
         '',
         {
@@ -39,6 +34,10 @@ export class LoginComponent {
           validators: [Validators.required],
         },
       ],
+      name:['',{
+        nonNullable: true,
+        validators:[Validators.required]
+      }]
     });
   }
 
@@ -47,7 +46,10 @@ export class LoginComponent {
   }
 
   public send(): void {
+    const student:StudentItnerface = this.loginForm.value;
+    student.img = '';
     if (this.loginForm.valid) {
+      this.db.addInDb(student);
       this.router.navigate(['home']);
       this.loginForm.reset();
     }
