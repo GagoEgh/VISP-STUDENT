@@ -86,6 +86,20 @@ export class DatabaseService {
         });
     }
 
+    public async updateStudentInfo(student:StudentItnerface){
+        const password = await this.getPassword();
+        const store = await this.createTransaction();
+        const request = store.put(student);
+        
+        request.onsuccess = () => {
+            console.log('success')
+        };
+
+        request.onerror = () => {
+            console.log('Error')
+        }
+    }
+
     public async getStudent(): Promise<any> {
         return new Promise(async (resolve, reject) => {
             try {

@@ -22,34 +22,72 @@
         }
     
         .header__user{
-            display: flex;
+            position: relative;
             width: 200px;
-            justify-content: space-between;
-            align-items: center;
+            
 
+            .header__user-info{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                cursor: pointer;
+
+                &:hover{
+                    opacity: 0.8;
+                    transition: all 0.5s;
+                }
+
+                .header__user-icon{
+                    height: 78px;
+                    width: 78px;
+                    border-radius: 50%;
+    
+                    @media (max-width: 769px) {
+                        width: 45px;
+                    }
+                }
+
+                .header__user-date{
+                    color: var(--color-white);
+                    font-size: 24px;
+    
+                    @media (max-width: 769px) {
+                        font-size: 16px;
+                    }
+                }
+    
+            }
+                
+    
             @media (max-width: 769px) {
                 width: 125px;
             }
-            .header__user-icon{
-                height: 78px;
-                width: 78px;
-
-                @media (max-width: 769px) {
-                    width: 45px;
-                }
-            }
+        
 
             & p{
                 padding: 0;
                 margin: 0;
             }
 
-            .header__user-date{
-                color: var(--color-white);
-                font-size: 24px;
+            .header__user-popap{
+                position: absolute;
+                left: 0;
+                top: 110%;
+                background: white;
+                padding: 8px;
 
-                @media (max-width: 769px) {
-                    font-size: 16px;
+                .user-popap-img{
+                    padding: 5px;
+                    letter-spacing: 0.5px;
+                    cursor: pointer;
+
+                    .user-popap-file{
+                        display: none;
+                    }
+
+                    .file-label{
+                        cursor: pointer;
+                    }
                 }
             }
         }
