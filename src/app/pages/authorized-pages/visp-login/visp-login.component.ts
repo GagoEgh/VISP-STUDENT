@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { DatabaseService } from '../../../core/services/datebase';
+import { StudentItnerface } from '../../../core/types/student.interface';
 
 @Component({
   selector: 'app-visp-login',
@@ -45,8 +46,7 @@ export class LoginComponent {
   }
 
   public send(): void {
-  
-    const student = this.loginForm.value;
+    const student:StudentItnerface = this.loginForm.value;
     student.img = '';
     if (this.loginForm.valid) {
       this.db.addInDb(student);

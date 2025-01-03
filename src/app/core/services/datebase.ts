@@ -1,5 +1,6 @@
 import { inject, Injectable } from "@angular/core";
 import { Router } from "@angular/router";
+import { StudentItnerface } from "../types/student.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -77,7 +78,6 @@ export class DatabaseService {
         return new Promise((resolve, reject) => {
         const request = store.get(0);
         request.onsuccess = () => {
-            console.log('pass result',request.result)
             resolve(request.result);
         };
         request.onerror = () => {
@@ -85,7 +85,6 @@ export class DatabaseService {
         };
         });
     }
-
 
     public async getStudent(): Promise<any> {
         return new Promise(async (resolve, reject) => {
@@ -107,7 +106,7 @@ export class DatabaseService {
         });
     }
 
-    public async addInDb(data: any): Promise<void> {
+    public async addInDb(data: StudentItnerface): Promise<void> {
         try {
             const store = await this.createTransaction();
             const request = store.add(data);
