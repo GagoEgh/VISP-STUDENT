@@ -1,15 +1,30 @@
-<div class="container">
-    <header class="header">
-        <img src="images/MaskGroup.png" alt="login" class="header__login">
-        <section class="header__user">
-            <user-icon class="header__user-icon"></user-icon>
-            <div class="header__user-date">
-                <p class="header__user-id">{{student()?.name}}</p>
+<div vispClickOutside  (outsideClick)="clickOutside()">
+    <div class="container">
+        <header class="header">
+            <img src="images/MaskGroup.png" alt="login" class="header__login">
+            <section class="header__user">
+                <div class="header__user-info" (click)="showPopup()">
+                    <img class="header__user-icon" [src]="userImage">
+                    <div class="header__user-date">
+                        <p class="header__user-id">{{student()?.name}}</p>
+                    </div>
+                </div>
+        
+                @if(openPopup()){
+                    <visp-userpopup [student]="student" (showPictureEvent)="onShowPicture($event)"></visp-userpopup>
+                }
+            </section>
+        </header>
+        @if(showPicture()){
+            <div class="user-image">
+                <visp-close-icon class="close" (click)="showPicture.set(false)"></visp-close-icon>
+                <img class="user-picture" [src]="userImage">
             </div>
-        </section>
-    </header>
-</div>
-<div class="content">
-    <visp-nav class="content__nav"></visp-nav>
-    <router-outlet class="content__router"></router-outlet>
+        }
+    </div>
+    <div class="content">
+        <visp-nav class="content__nav"></visp-nav>
+        <router-outlet class="content__router"></router-outlet>
+    </div>
+ 
 </div>

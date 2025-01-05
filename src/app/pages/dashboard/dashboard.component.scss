@@ -1,4 +1,5 @@
 .container{
+    position: relative;
     height: 124px;
     width: 100%;
     background-color: var(--color-dark-red);
@@ -22,36 +23,71 @@
         }
     
         .header__user{
-            display: flex;
+            position: relative;
             width: 200px;
-            justify-content: space-between;
-            align-items: center;
+            
 
+            .header__user-info{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                cursor: pointer;
+
+                &:hover{
+                    opacity: 0.8;
+                    transition: all 0.5s;
+                }
+
+                .header__user-icon{
+                    height: 78px;
+                    width: 78px;
+                    border-radius: 50%;
+    
+                    @media (max-width: 769px) {
+                        width: 45px;
+                    }
+                }
+
+                .header__user-date{
+                    color: var(--color-white);
+                    font-size: 24px;
+    
+                    @media (max-width: 769px) {
+                        font-size: 16px;
+                    }
+                }
+    
+            }
+            
             @media (max-width: 769px) {
                 width: 125px;
             }
-            .header__user-icon{
-                height: 78px;
-                width: 78px;
-
-                @media (max-width: 769px) {
-                    width: 45px;
-                }
-            }
-
+        
             & p{
                 padding: 0;
                 margin: 0;
             }
+        }
+    }
 
-            .header__user-date{
-                color: var(--color-white);
-                font-size: 24px;
+    .user-image{
+        position: absolute;
+        z-index: 999;
+        left: 40%;
+        top: 146%;
+        padding: 16px;
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
 
-                @media (max-width: 769px) {
-                    font-size: 16px;
-                }
-            }
+        .close{
+            align-self: flex-end;
+            padding-bottom: 5px;
+            cursor: pointer;
+        }
+        .user-picture{
+            width: 300px;
+            height: 300px;
         }
     }
 }
@@ -63,3 +99,4 @@
       flex-direction: column;
     }
 }
+

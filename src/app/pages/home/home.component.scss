@@ -11,7 +11,12 @@
 .up{
 
     @media (max-width: 769px) {
-        transform: translate(0px, -450px);
+        transform: translate(0px, -650px);
+        transition:all 1s ease-in-out;
+    }
+
+    @media (max-width: 426px) {
+        transform: translate(35px, -450px);
         transition:all 1s ease-in-out;
     }
 }
@@ -170,6 +175,12 @@
                 @include list(18px,700px);
                 @media (max-width: 1025px) {
                     @include list(15px,450px);
+                }
+
+                @media (max-width: 426px) {
+                   
+                    @include list(15px,230px);
+                    grid-template-columns: repeat(1, 1fr);
                 }
                 
                 
