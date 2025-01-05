@@ -1,0 +1,11 @@
+<div class="header__user-popap" id="popup">
+   
+    <div class="user-popap-img">
+        <input accept=".jpg, .jpeg, .png" type="file" id="img" class="user-popap-file"  
+        (change)="handleFileInput($event)">
+        <label for="img" class="file-label" >загрузить изображение</label>        
+    </div>
+    <div class="user-popap-img">
+        <p (click)="onShowPicture()">показать изображение </p>
+    </div>
+</div>

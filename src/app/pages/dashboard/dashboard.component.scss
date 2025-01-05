@@ -58,46 +58,14 @@
                 }
     
             }
-                
-    
+            
             @media (max-width: 769px) {
                 width: 125px;
             }
         
-
             & p{
                 padding: 0;
                 margin: 0;
-            }
-
-            .header__user-popap{
-                position: absolute;
-                left: 0;
-                top: 100%;
-                background:var(--color-white);
-                padding: 8px;
-                box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-                border-radius: 5px;
-                z-index: 999;
-                
-                .user-popap-img{
-                    padding: 5px;
-                    letter-spacing: 0.5px;
-                    cursor: pointer;
-                    transition: color 0.5s;
-
-                    &:hover{
-                        color: var(--color-natural-gray);
-                    }
-
-                    .user-popap-file{
-                        display: none;
-                    }
-
-                    .file-label{
-                        cursor: pointer;
-                    }
-                }
             }
         }
     }
@@ -109,6 +77,14 @@
         top: 146%;
         padding: 16px;
         width: fit-content;
+        display: flex;
+        flex-direction: column;
+
+        .close{
+            align-self: flex-end;
+            padding-bottom: 5px;
+            cursor: pointer;
+        }
         .user-picture{
             width: 300px;
             height: 300px;

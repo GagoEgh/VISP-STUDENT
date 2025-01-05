@@ -5,19 +5,20 @@ import { UserIcon } from '../../common/ui/user-icon';
 import { DatabaseService } from '../../core/services/datebase';
 import { StudentItnerface } from '../../core/types/student.interface';
 import { ClickOutsideDirective } from '../../core/directives/click-outside.directive';
+import { CloseIcon } from '../../common/ui/close-icon';
+import { UserpopupComponent } from '../../common/components/userpopup/userpopup.component';
 
 @Component({
   selector: 'visp-dashboard',
   standalone: true,
-  imports: [RouterLink,RouterOutlet,NavComponent,UserIcon,ClickOutsideDirective],
+  imports: [RouterLink,RouterOutlet,NavComponent,UserIcon,ClickOutsideDirective,CloseIcon,UserpopupComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
   public openPopup = signal(false);
-  public showPicture = signal(false);
   public student:WritableSignal<StudentItnerface|null>= signal(null);
-  private fileToUpload!: File;
+  public showPicture = signal(false);
   private db = inject(DatabaseService);
   constructor(){
     this.getStudent()
@@ -35,41 +36,10 @@ export class DashboardComponent {
     this.openPopup.set(false);
   }
 
-  public handleFileInput(event:Event):void {
-    const fileList: FileList = (event.target as HTMLInputElement).files!;
-    if (fileList.length > 0) {
-      const file: File = fileList[0];
-      this.fileToUpload = file;
-    }
-
-    this.upload(this.fileToUpload);
+  public onShowPicture(ev:boolean):void{
+    this.showPicture.set(ev);
   }
-
-  private upload(file: File) {
-    const reader = new FileReader();
-    reader.onload = () => {
-      const imageData = reader.result as string;
-      this.student.update((currentState:StudentItnerface|null)=>{
-        if (!currentState) {
-          return null; 
-        }
-        return{
-          ...currentState,
-          img:imageData
-        }
-      })
-
-      this.db.updateStudentInfo(this.student()!);
-      this.getStudent();
-    };
-
-    reader.onerror = (error) => {
-        console.error("Error reading file:", error);
-    };
-
-    reader.readAsDataURL(file);
-  }
-
+  
   private getStudent():void{
     this.db.getStudent()
     .then((result)=>{

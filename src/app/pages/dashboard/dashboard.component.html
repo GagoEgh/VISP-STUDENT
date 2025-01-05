@@ -11,22 +11,13 @@
                 </div>
         
                 @if(openPopup()){
-                    <div class="header__user-popap" id="popup">
-                        <div class="user-popap-img">
-                            <p (click)="showPicture.set(true)">показать изображение </p>
-                        </div>
-                        <div class="user-popap-img">
-                            <input accept=".jpg, .jpeg, .png" type="file" id="img" class="user-popap-file"  
-                            (change)="handleFileInput($event)">
-                            <label for="img" class="file-label" >загрузить изображение</label>
-                            
-                        </div>
-                    </div>
+                    <visp-userpopup [student]="student" (showPictureEvent)="onShowPicture($event)"></visp-userpopup>
                 }
             </section>
         </header>
         @if(showPicture()){
             <div class="user-image">
+                <visp-close-icon class="close" (click)="showPicture.set(false)"></visp-close-icon>
                 <img class="user-picture" [src]="userImage">
             </div>
         }
