@@ -1,21 +1,22 @@
-import { Component, ElementRef, inject, signal, ViewChild, WritableSignal } from '@angular/core';
+import { Component, inject, signal, WritableSignal } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { NavComponent } from '../nav/nav.component';
 import { UserIcon } from '../../common/ui/user-icon';
 import { DatabaseService } from '../../core/services/datebase';
 import { StudentItnerface } from '../../core/types/student.interface';
+import { ClickOutsideDirective } from '../../core/directives/click-outside.directive';
 
 @Component({
   selector: 'visp-dashboard',
   standalone: true,
-  imports: [RouterLink,RouterOutlet,NavComponent,UserIcon],
+  imports: [RouterLink,RouterOutlet,NavComponent,UserIcon,ClickOutsideDirective],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
   public openPopup = signal(false);
+  public showPicture = signal(false);
   public student:WritableSignal<StudentItnerface|null>= signal(null);
-  @ViewChild('file', { static: true }) fileInput!: ElementRef;
   private fileToUpload!: File;
   private db = inject(DatabaseService);
   constructor(){
@@ -25,12 +26,16 @@ export class DashboardComponent {
   get userImage(): string {
     return this.student()?.img || 'images/user.png';
   }
-  
+
   public showPopup(){
-    this.openPopup.update(value=>value= !value)
+    this.openPopup.update(value=>value= !value);
   }
 
-  public handleFileInput(event:Event) {
+  public clickOutside():void{
+    this.openPopup.set(false);
+  }
+
+  public handleFileInput(event:Event):void {
     const fileList: FileList = (event.target as HTMLInputElement).files!;
     if (fileList.length > 0) {
       const file: File = fileList[0];

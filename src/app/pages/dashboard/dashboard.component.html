@@ -1,31 +1,39 @@
-<div class="container">
-    <header class="header">
-        <img src="images/MaskGroup.png" alt="login" class="header__login">
-        <section class="header__user">
-            <div class="header__user-info" (click)="showPopup()">
-                <img class="header__user-icon" [src]="userImage">
-                <div class="header__user-date">
-                    <p class="header__user-id">{{student()?.name}}</p>
+<div vispClickOutside  (outsideClick)="clickOutside()">
+    <div class="container">
+        <header class="header">
+            <img src="images/MaskGroup.png" alt="login" class="header__login">
+            <section class="header__user">
+                <div class="header__user-info" (click)="showPopup()">
+                    <img class="header__user-icon" [src]="userImage">
+                    <div class="header__user-date">
+                        <p class="header__user-id">{{student()?.name}}</p>
+                    </div>
                 </div>
+        
+                @if(openPopup()){
+                    <div class="header__user-popap" id="popup">
+                        <div class="user-popap-img">
+                            <p (click)="showPicture.set(true)">показать изображение </p>
+                        </div>
+                        <div class="user-popap-img">
+                            <input accept=".jpg, .jpeg, .png" type="file" id="img" class="user-popap-file"  
+                            (change)="handleFileInput($event)">
+                            <label for="img" class="file-label" >загрузить изображение</label>
+                            
+                        </div>
+                    </div>
+                }
+            </section>
+        </header>
+        @if(showPicture()){
+            <div class="user-image">
+                <img class="user-picture" [src]="userImage">
             </div>
-    
-            @if(openPopup()){
-                <div class="header__user-popap">
-                    <div class="user-popap-img">
-                        <p>показать изображение </p>
-                    </div>
-                    <div class="user-popap-img">
-                        <input #file accept=".jpg, .jpeg, .png" type="file" id="img" class="user-popap-file"  
-                        (change)="handleFileInput($event)">
-                        <label for="img" class="file-label" >загрузить изображение</label>
-                        
-                    </div>
-                </div>
-            }
-        </section>
-    </header>
-</div>
-<div class="content">
-    <visp-nav class="content__nav"></visp-nav>
-    <router-outlet class="content__router"></router-outlet>
+        }
+    </div>
+    <div class="content">
+        <visp-nav class="content__nav"></visp-nav>
+        <router-outlet class="content__router"></router-outlet>
+    </div>
+ 
 </div>
