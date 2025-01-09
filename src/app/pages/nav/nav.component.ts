@@ -33,9 +33,7 @@ export class NavComponent {
   private fromStyleService = inject(FromStyleService);
   public isOpen = signal(false);
   readonly routes = AppRoutes;
-
-  constructor() {}
-
+  
   public opened(): void {
     this.isOpen.update(open => !open);
     this.fromStyleService.updateIsOpen(this.isOpen());
