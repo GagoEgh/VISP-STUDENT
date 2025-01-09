@@ -53,11 +53,11 @@
 }
 
 .nav-open{
-    transform: translate(-1468px);
+    transform: translate(-1515px);
     transition:all 1s ease-in-out;
 
     @media (max-width: 1536px) {
-        transform: translate(-450px);
+        transform: translate(-500px);
         transition:all 0.5s ease-in-out;
     }
 
@@ -67,7 +67,7 @@
     }
 
     @media (max-width: 1025px) {
-        transform: translate(-180px);
+        transform: translate(-215px);
         transition:all 0.5s ease-in-out;
     }
 
@@ -83,11 +83,11 @@
 }
 
 .nav-close{
-    transform: translate(-1315px);
+    transform: translate(-1373px);
     transition:all 0.5s ease-in-out;
 
     @media (max-width: 1536px) {
-        transform: translate(-278px);
+        transform: translate(-351px);
         transition:all 0.5s ease-in-out;
     }
 
@@ -97,7 +97,7 @@
     }
 
     @media (max-width: 1025px) {
-        transform: translate(-5px);
+        transform: translate(-65px);
         transition:all 0.5s ease-in-out;
     }
 
