@@ -1,5 +1,6 @@
 export interface StudentItnerface{
     password:string,
     name:string,
-    img:string
+    img:string,
+    notifications:string[]
 }

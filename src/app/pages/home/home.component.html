@@ -49,12 +49,15 @@
     </div>
     <div class="notifiaction">
         <h2 class="notifiaction-title">Notifications</h2>
-        <input type="text" class="notifiaction-input-text">
+        <input type="text" class="notifiaction-input-text" placeholder="text" 
+        [value]=""    (keyup.enter)="addNotification($event)">
         <ul class="notifiaction-list">
-            <li class="notifiaction-list_text">
-                <p>Course Registration on 03-August</p> 
-                <p>01-Aug-2021</p> 
-            </li>
+            @for(notifiaction of student()?.notifications; track notifiaction){
+                <li class="notifiaction-list_text">
+                    <span>{{notifiaction}}</span> 
+                    <visp-close-icon (click)="deletNotification(notifiaction)"></visp-close-icon>
+                </li>
+            } 
         </ul>
     </div>
 
