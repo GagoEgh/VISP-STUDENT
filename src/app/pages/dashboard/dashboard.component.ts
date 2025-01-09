@@ -2,11 +2,11 @@ import { Component, inject, signal, WritableSignal } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { NavComponent } from '../nav/nav.component';
 import { UserIcon } from '../../common/ui/user-icon';
-import { DatabaseService } from '../../core/services/datebase';
 import { StudentItnerface } from '../../core/types/student.interface';
 import { ClickOutsideDirective } from '../../core/directives/click-outside.directive';
 import { CloseIcon } from '../../common/ui/close-icon';
 import { UserpopupComponent } from '../../common/components/userpopup/userpopup.component';
+import { StudentDataService } from '../../core/services/studentData.service';
 
 @Component({
   selector: 'visp-dashboard',
@@ -19,9 +19,10 @@ export class DashboardComponent {
   public openPopup = signal(false);
   public student:WritableSignal<StudentItnerface|null>= signal(null);
   public showPicture = signal(false);
-  private db = inject(DatabaseService);
+
+  private studentService = inject(StudentDataService);
   constructor(){
-    this.getStudent()
+    this.studentService.getStudent(this.student)
   }
 
   get userImage(): string {
@@ -39,14 +40,5 @@ export class DashboardComponent {
   public onShowPicture(ev:boolean):void{
     this.showPicture.set(ev);
   }
-  
-  private getStudent():void{
-    this.db.getStudent()
-    .then((result)=>{
-      this.student.set(result);
-    })
-    .catch((erore)=>{
-      console.log('Error',erore);
-    })
-  }
+
 }

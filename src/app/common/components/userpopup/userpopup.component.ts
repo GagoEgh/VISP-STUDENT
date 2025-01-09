@@ -1,6 +1,6 @@
 import { Component, EventEmitter, inject, Input, Output, signal, WritableSignal } from '@angular/core';
 import { StudentItnerface } from '../../../core/types/student.interface';
-import { DatabaseService } from '../../../core/services/datebase';
+import { StudentDataService } from '../../../core/services/studentData.service';
 
 @Component({
   selector: 'visp-userpopup',
@@ -10,8 +10,9 @@ import { DatabaseService } from '../../../core/services/datebase';
   styleUrl: './userpopup.component.scss'
 })
 export class UserpopupComponent {
-  private db = inject(DatabaseService);
   private fileToUpload!: File;
+  private studentService = inject(StudentDataService);
+  
   public showPicture = signal(false);
   @Input()student:WritableSignal<StudentItnerface|null> = signal(null);
   @Output()showPictureEvent=new EventEmitter<boolean>()
@@ -26,26 +27,16 @@ export class UserpopupComponent {
     this.upload(this.fileToUpload);
   }
 
-  public onShowPicture(){
+  public onShowPicture():void{
     this.showPicture.set(true);
     this.showPictureEvent.emit(true)
   }
-  private upload(file: File) {
+
+  private upload(file: File):void {
     const reader = new FileReader();
     reader.onload = () => {
       const imageData = reader.result as string;
-      this.student.update((currentState:StudentItnerface|null)=>{
-        if (!currentState) {
-          return null; 
-        }
-        return{
-          ...currentState,
-          img:imageData
-        }
-      })
-
-      this.db.updateStudentInfo(this.student()!);
-      this.getStudent();
+      this.studentService.updateStudentDate(this.student,imageData,'img');
     };
 
     reader.onerror = (error) => {
@@ -55,13 +46,4 @@ export class UserpopupComponent {
     reader.readAsDataURL(file);
   }
 
-  private getStudent():void{
-    this.db.getStudent()
-    .then((result)=>{
-      this.student.set(result);
-    })
-    .catch((erore)=>{
-      console.log('Error',erore);
-    })
-  }
 }

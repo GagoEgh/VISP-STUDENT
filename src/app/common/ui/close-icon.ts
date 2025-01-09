@@ -17,6 +17,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         justify-content: center;
         width: var(--app-icon-size, 24px);
         height: var(--app-icon-size, 24px);
+        cursor:pointer;
       }
 
     `,

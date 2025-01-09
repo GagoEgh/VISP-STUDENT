@@ -11,12 +11,7 @@
 .up{
 
     @media (max-width: 769px) {
-        transform: translate(0px, -650px);
-        transition:all 1s ease-in-out;
-    }
-
-    @media (max-width: 426px) {
-        transform: translate(35px, -450px);
+        transform: translate(0px, -450px);
         transition:all 1s ease-in-out;
     }
 }
@@ -257,9 +252,33 @@
 
     .notifiaction{
         height: calc(100vh - 135px);
+        width: 200px;
         background-color: var(--color-silver);
         border-radius: 10px;
         margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .notifiaction-input-text{
+            padding: 2px 8px;
+            background-color: var(--color-silver);
+            border: 0;
+            border-bottom: 2px solid var(--color-natural-gray);
+            outline: 0;
+            font-size: 1rem;
+            height: 30px;
+            width: 80%;
+            appearance: none;
+            color: var(--color-natural-gray);
+            outline: transparent;
+
+            &::placeholder {
+                font-size: 1.3rem;
+                cursor: text;
+                top: 20px;
+            }  
+        } 
 
         .notifiaction-title{
             margin: 0;
@@ -269,13 +288,16 @@
 
         .notifiaction-list{
             list-style: none;
-            padding-bottom: 5px;
-            border-bottom: 1px solid var(--color-light-gray);;
+            padding: 0 0 5px 7px;
+         
             .notifiaction-list_text{
-                p{
+                display: flex;
+                border-bottom: 1px solid var(--color-light-gray);
+                transition: all 0.5s;
+                span{
                     margin: 0;
                     padding: 2px;
-                    color: var(--color-light-gray);
+                    color: var(--color-natural-gray);
                 }
             }
         }

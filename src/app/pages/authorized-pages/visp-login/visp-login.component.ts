@@ -48,6 +48,7 @@ export class LoginComponent {
   public send(): void {
     const student:StudentItnerface = this.loginForm.value;
     student.img = '';
+    student.notifications=[];
     if (this.loginForm.valid) {
       this.db.addInDb(student);
       this.router.navigate(['home']);
