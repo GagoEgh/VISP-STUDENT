@@ -2,46 +2,46 @@
     <ul class="navigation-list" [class]="isOpen()?'nav-open':'nav-close'">
         <li class="navigation-list__link">
             <a class="navigation-list__link-path">
-                <span>Student name</span><visp-menu-icon class="open-close"(click)="opened()"></visp-menu-icon>
+                <span>{{'Student name' | uppercase}}</span><visp-menu-icon class="open-close"(click)="opened()"></visp-menu-icon>
             </a>
         </li>
         <li class="navigation-list__link">
             <a [routerLink] ='routes.home' class="navigation-list__link-path">
-                <span>{{routes.home}}</span><home-icon></home-icon>
+                <span>{{routes.home | uppercase}}</span><home-icon></home-icon>
             </a>
         </li>
         <li class="navigation-list__link">
             <a [routerLink] ='routes.educational' class="navigation-list__link-path">
-                <span>{{routes.educational}}</span><exclamation-icon></exclamation-icon>
+                <span>{{routes.educational | uppercase}}</span><exclamation-icon></exclamation-icon>
             </a>
         </li>
         <li class="navigation-list__link">
             <a [routerLink] ='routes.family' class="navigation-list__link-path">
-                <span>{{routes.family}}</span><school-icon></school-icon></a>
+                <span>{{routes.family | uppercase}}</span><school-icon></school-icon></a>
         </li>
         <li class="navigation-list__link">
             <a [routerLink] ='routes.grades' class="navigation-list__link-path">
-                <span>{{routes.grades}}</span><event-note-icon></event-note-icon>
+                <span>{{routes.grades | uppercase}}</span><event-note-icon></event-note-icon>
             </a>
         </li>
         <li class="navigation-list__link">
             <a [routerLink] ='routes.hostel' class="navigation-list__link-path">
-                <span>{{routes.hostel}}</span><credit-card-icon></credit-card-icon>
+                <span>{{routes.hostel | uppercase}}</span><credit-card-icon></credit-card-icon>
             </a>
         </li>
         <li class="navigation-list__link">
             <a [routerLink] ='routes.issues' class="navigation-list__link-path">
-                <span>{{routes.issues}}</span><live-help-icon></live-help-icon>
+                <span>{{routes.issues | uppercase}}</span><live-help-icon></live-help-icon>
             </a>
         </li>
         <li class="navigation-list__link">
             <a [routerLink] ='routes.personalInfo' class="navigation-list__link-path">
-                <span>{{routes.personalInfo}}</span> <account-box-icon></account-box-icon>
+                <span>{{routes.personalInfo | uppercase}}</span> <account-box-icon></account-box-icon>
             </a>
         </li>
         <li class="navigation-list__link">
             <a [routerLink] ='routes.proctor' class="navigation-list__link-path">
-                <span>{{routes.proctor}}</span> <proctor-icon></proctor-icon>
+                <span>{{routes.proctor | uppercase}}</span> <proctor-icon></proctor-icon>
             </a>
         </li>
     </ul>
