@@ -52,7 +52,7 @@ export class HomeComponent{
     });
   }
   
-  public addNotification(event:KeyboardEvent):void{
+  public addNotification(event:Event):void{
     const text = (event.target as HTMLInputElement).value;
     this.student()?.notifications.push(text);
     this.db.updateStudentInfo(this.student()!);

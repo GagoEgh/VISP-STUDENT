@@ -2,7 +2,6 @@
     <h1 class="register-wrapper__title">Welcome Visp</h1>
     <div class="register-wrapper">
         <div class="register-wrapper__form">
-           
             <form class="register-wrapper__form-container" [formGroup]="registerForm" (ngSubmit)="send()">
                 <div class="register-wrapper__block">
                     <input class="register-wrapper__input" formControlName="name" type="text"  placeholder="Name" />
@@ -60,6 +59,7 @@
                 </button>
                 <visp-arrow-right-icon class="register-wrapper__icon-arrow"></visp-arrow-right-icon>
             </form>
+            <a routerLink="/login">Go to Login page</a>
         </div>
     </div>
     <div class="register-copy">

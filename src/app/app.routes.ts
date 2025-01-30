@@ -5,8 +5,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { VispRegisterComponent } from './pages/authorized-pages/visp-register/visp-register.component';
 
 export const routes: Routes = [
-    // {path:'',component:LoginComponent},
     {path:'',component:VispRegisterComponent},
+    {path:'login', component:LoginComponent},
     {
         path:'',component:DashboardComponent,
         children:[
