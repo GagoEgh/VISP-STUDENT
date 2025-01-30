@@ -4,13 +4,15 @@ import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } fr
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { ArrowRightIcon } from '../../../common/ui/arrow-right-icon';
 import { VisibilityIcon } from '../../../common/ui/visibility-icon';
+import { passwordMatchValidator } from '../../../core/helpers/validators/passwordMatchValidator';
+import { emailValidator } from '../../../core/helpers/validators/emailValidator';
 
 @Component({
   selector: 'visp-visp-register',
   standalone: true,
   imports: [ArrowRightIcon, VisibilityIcon, ReactiveFormsModule,RouterOutlet, RouterLink],
   templateUrl: './visp-register.component.html',
-  styleUrl: './visp-register.component.scss'
+  styleUrls:['./visp-register.component.scss','../authorized-pages.scss']
 })
 export class VispRegisterComponent {
   private db = inject(DatabaseService);
@@ -25,40 +27,21 @@ export class VispRegisterComponent {
   
   private initForm():void{
     this.registerForm = this.fb.group({
-      password: [
-        '',
-        {
-          nonNullable: true,
-          validators: [Validators.required],
-        },
-      ],
-      name:['',{
-        nonNullable: true,
-        validators:[Validators.required]
-      }],
-      birthDate:['',{
-        nonNullable: true,
-        validators:[Validators.required]
-      }],
-      gender:['',{
-        nonNullable: true,
-        validators:[Validators.required]
-      }],
-      language:['',{
-        nonNullable: true,
-        validators:[Validators.required]
-      }],
-      nativeState:['',{
-        nonNullable: true,
-        validators:[Validators.required]
-      }],
-      religion:['',{
-        nonNullable: true,
-        validators:[Validators.required]
-      }]
-    });
+      email: ['',[Validators.required,emailValidator]],
+      password: ['',[Validators.required]],
+      confirmPassword: ['',[Validators.required]],
+      name:['', [Validators.required]],
+      birthDate:['',[Validators.required]],
+      gender:['', [Validators.required]],
+    },{validators:[passwordMatchValidator('password','confirmPassword')]});
   }
-  send(){
 
+  public showErrorMessage(controlName:string,validatorsName:string):boolean{
+    return this.registerForm.controls[controlName].hasError(validatorsName) && this.registerForm.controls[controlName].touched
+  }
+
+  send(){
+    console.log('form',this.registerForm.errors);
+    console.log('form',this.registerForm.valid)
   }
 }

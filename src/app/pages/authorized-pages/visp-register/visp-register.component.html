@@ -4,44 +4,35 @@
         <div class="register-wrapper__form">
             <form class="register-wrapper__form-container" [formGroup]="registerForm" (ngSubmit)="send()">
                 <div class="register-wrapper__block">
-                    <input class="register-wrapper__input" formControlName="name" type="text"  placeholder="Name" />
-                    <!-- @if(showErrorMessage('name','required')){
+                    <input class="register-wrapper__input" formControlName="email" type="text"  placeholder="Email" />
+                    @if(showErrorMessage('email','required')){
                         <span class="error">Please complete the field</span>
-                    } -->
+                    }@else if(showErrorMessage('email','incorrectMail')){
+                        <span class="error">Wrong syntax</span>
+                    }
+
+                </div>
+                <div class="register-wrapper__block">
+                    <input class="register-wrapper__input" formControlName="name" type="text"  placeholder="Name" />
+                    @if(showErrorMessage('name','required')){
+                        <span class="error">Please complete the field</span>
+                    }
                 </div>
                 <div class="register-wrapper__block">
                     <input class="register-wrapper__input" formControlName="birthDate" type="text"  placeholder="Date Of Birth" />
-                    <!-- @if(showErrorMessage('name','required')){
+                    @if(showErrorMessage('birthDate','required')){
                         <span class="error">Please complete the field</span>
-                    } -->
-                </div>
-                <div class="register-wrapper__block">
-                    <input class="register-wrapper__input" formControlName="language" type="text"  placeholder="Native Language" />
-                    <!-- @if(showErrorMessage('name','required')){
-                        <span class="error">Please complete the field</span>
-                    } -->
-                </div>
-                <div class="register-wrapper__block">
-                    <input class="register-wrapper__input" formControlName="nativeState" type="text"  placeholder="Native State" />
-                    <!-- @if(showErrorMessage('name','required')){
-                        <span class="error">Please complete the field</span>
-                    } -->
-                </div>
-                <div class="register-wrapper__block">
-                    <input class="register-wrapper__input" formControlName="religion" type="text"  placeholder="Religion" />
-                    <!-- @if(showErrorMessage('name','required')){
-                        <span class="error">Please complete the field</span>
-                    } -->
+                    }
                 </div>
                 <div class="register-wrapper__block">
                     <select formControlName="gender" class="register-wrapper__input">
-                        <option value="">Please choose an option</option>
+                        <option disabled selected value="">Please choose your gender</option>
                         <option class="option" value="male">male</option>
                         <option class="option" value="fimale">fimale</option>
                     </select>
-                    <!-- @if(showErrorMessage('name','required')){
+                    @if(showErrorMessage('gender','required')){
                         <span class="error">Please complete the field</span>
-                    } -->
+                    }
                 </div>
                 <div class="register-wrapper__block">
                     <input class="register-wrapper__input password" formControlName="password" 
@@ -49,21 +40,32 @@
                     <visp-visibility-icon  class="register-wrapper__icon-eye" 
                     (click)="crossed = !crossed" [crossed]="crossed">
                     </visp-visibility-icon>
-                    <!-- @if(showErrorMessage('password','required')){
+                    @if(showErrorMessage('password','required')){
                         <span class="error">Please complete the field</span>
-                    } -->
+                    }
                 </div>
-            
-                <button type="submit" class="register-wrapper__button">
+                <div class="register-wrapper__block">
+                    <input class="register-wrapper__input password" formControlName="confirmPassword" 
+                    [type]="crossed?'password':'text'" placeholder="Confirm Password" />
+                    <visp-visibility-icon  class="register-wrapper__icon-eye" 
+                    (click)="crossed = !crossed" [crossed]="crossed">
+                    </visp-visibility-icon>
+                    @if(showErrorMessage('confirmPassword','required')){
+                        <span class="error">Please complete the field</span>
+                    }@else if(registerForm.errors && registerForm.errors['passwordNoMatch']){
+                        <span class="error">It is not same</span>
+                    }
+                </div>
+                <button type="submit" class="wrapper__button">
                 Let’s Go 
                 </button>
                 <visp-arrow-right-icon class="register-wrapper__icon-arrow"></visp-arrow-right-icon>
             </form>
-            <a routerLink="/login">Go to Login page</a>
+            <a routerLink="/login" class="path">Go to Login page</a>
         </div>
     </div>
-    <div class="register-copy">
-        <p class="register-copy-par">Copyright © 2021 VISP. All Rights Reserved</p>
+    <div class="authorized-copy">
+        <p class="authorized-copy-par">Copyright © 2021 VISP. All Rights Reserved</p>
     </div> 
 </div>
 

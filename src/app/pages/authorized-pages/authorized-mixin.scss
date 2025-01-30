@@ -1,0 +1,21 @@
+@mixin wrapper($width){
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: $width;
+}
+
+@mixin wrapper__form($width){
+    width: $width;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@mixin wrapper__form-container($width){
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: $width;
+    
+}

@@ -16,7 +16,7 @@ import { StudentItnerface } from '../../../core/types/student.interface';
   standalone: true,
   imports: [ArrowRightIcon, VisibilityIcon, ReactiveFormsModule,RouterOutlet, RouterLink],
   templateUrl: './visp-login.component.html',
-  styleUrl: './visp-login.component.scss',
+  styleUrls:['./visp-login.component.scss','../authorized-pages.scss']
 })
 export class LoginComponent {
   private db = inject(DatabaseService);
