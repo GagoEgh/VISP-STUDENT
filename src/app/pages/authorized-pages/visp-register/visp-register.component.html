@@ -4,13 +4,13 @@
         <div class="register-wrapper__form">
             <form class="register-wrapper__form-container" [formGroup]="registerForm" (ngSubmit)="send()">
                 <div class="register-wrapper__block">
-                    <input class="register-wrapper__input" formControlName="email" type="text"  placeholder="Email" />
+                    <visp-email formControlName="email" ></visp-email>
                     @if(showErrorMessage('email','required')){
                         <span class="error">Please complete the field</span>
                     }@else if(showErrorMessage('email','incorrectMail')){
                         <span class="error">Wrong syntax</span>
                     }
-
+                
                 </div>
                 <div class="register-wrapper__block">
                     <input class="register-wrapper__input" formControlName="name" type="text"  placeholder="Name" />

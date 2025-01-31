@@ -6,11 +6,12 @@ import { ArrowRightIcon } from '../../../common/ui/arrow-right-icon';
 import { VisibilityIcon } from '../../../common/ui/visibility-icon';
 import { passwordMatchValidator } from '../../../core/helpers/validators/passwordMatchValidator';
 import { emailValidator } from '../../../core/helpers/validators/emailValidator';
+import { EmailComponent } from '../../../common/components/email/email.component';
 
 @Component({
   selector: 'visp-visp-register',
   standalone: true,
-  imports: [ArrowRightIcon, VisibilityIcon, ReactiveFormsModule,RouterOutlet, RouterLink],
+  imports: [ArrowRightIcon, VisibilityIcon, ReactiveFormsModule,RouterOutlet, RouterLink, EmailComponent],
   templateUrl: './visp-register.component.html',
   styleUrls:['./visp-register.component.scss','../authorized-pages.scss']
 })
@@ -41,7 +42,7 @@ export class VispRegisterComponent {
   }
 
   send(){
-    console.log('form',this.registerForm.errors);
-    console.log('form',this.registerForm.valid)
+   
+    console.log('form',this.registerForm)
   }
 }
