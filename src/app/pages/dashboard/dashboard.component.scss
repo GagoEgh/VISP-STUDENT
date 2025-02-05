@@ -94,7 +94,8 @@
 
 .content{
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
+
     @media (max-width: 769px) {
       flex-direction: column;
     }

@@ -1,0 +1,70 @@
+<div class="container">
+    <visp-error [text]="errorText" [isError]="isError"></visp-error>
+    <h1 class="register-wrapper__title">Welcome Visp</h1>
+    <div class="register-wrapper">
+        <div class="register-wrapper__form">
+            <form class="register-wrapper__form-container" [formGroup]="registerForm" (ngSubmit)="send()">
+                <div class="register-wrapper__block">
+                    <visp-email formControlName="email" ></visp-email>
+                    @if(showErrorMessage('email','required')){
+                        <span class="error">Please complete the field</span>
+                    }@else if(showErrorMessage('email','incorrectMail')){
+                        <span class="error">Wrong syntax</span>
+                    }
+                
+                </div>
+                <div class="register-wrapper__block">
+                    <input class="register-wrapper__input" formControlName="name" type="text"  placeholder="Name" />
+                    @if(showErrorMessage('name','required')){
+                        <span class="error">Please complete the field</span>
+                    }
+                </div>
+                <div class="register-wrapper__block">
+                    <input class="register-wrapper__input" formControlName="birthDate" [max]="createMaxDate()" type="date" placeholder="Date Of Birth" />
+                    @if(showErrorMessage('birthDate','required')){
+                        <span class="error">Please complete the field</span>
+                    }
+                </div>
+                <div class="register-wrapper__block">
+                    <select formControlName="gender" class="register-wrapper__input">
+                        <option disabled selected value="">Please choose your gender</option>
+                        <option class="option" value="male">male</option>
+                        <option class="option" value="fimale">fimale</option>
+                    </select>
+                    @if(showErrorMessage('gender','required')){
+                        <span class="error">Please complete the field</span>
+                    }
+                </div>
+                <div class="register-wrapper__block">
+                    <visp-password formControlName="password" ></visp-password>
+                    @if(showErrorMessage('password','required')){
+                        <span class="error">Please complete the field</span>
+                    }@else if(showErrorMessage('password','minlength')){
+                        <span class="error">The minimum character went be 7</span>
+                    }
+                </div>
+                <div class="register-wrapper__block">
+                    <visp-password formControlName="confirmPassword" ></visp-password>
+                    @if(showErrorMessage('confirmPassword','required')){
+                        <span class="error">Please complete the field</span>
+                    }@else if(showErrorMessage('confirmPassword','minlength')){
+                        <span class="error">The minimum character went be 7</span>
+                    }@else if(isSamePassword()){
+                        <span class="error">It is not same</span>
+                    }
+                </div>
+                <button type="submit" class="wrapper__button">
+                Let’s Go 
+                </button>
+                <visp-arrow-right-icon class="register-wrapper__icon-arrow"></visp-arrow-right-icon>
+            </form>
+            <a routerLink="/login" class="path">Go to Login page</a>
+        </div>
+    </div>
+    <div class="authorized-copy">
+        <p class="authorized-copy-par">Copyright © 2021 VISP. All Rights Reserved</p>
+    </div> 
+</div>
+
+
+

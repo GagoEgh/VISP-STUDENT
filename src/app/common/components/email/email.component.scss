@@ -1,0 +1,22 @@
+.register-wrapper__input{
+  padding: 10px;
+  border: none;
+  border-radius: 15px;
+  width: -webkit-fill-available;
+
+  &::placeholder {
+    color: var(--color-silver);
+  }
+
+  &:focus{
+    outline: none;
+  }
+    
+  @media (max-width: 1025px) {
+    border-radius: 8px;
+  }
+
+  @media (max-width: 769px) {
+    padding: 8px;
+  }
+}

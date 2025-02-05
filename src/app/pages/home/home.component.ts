@@ -41,7 +41,7 @@ export class HomeComponent{
   public student:WritableSignal<StudentItnerface|null>= signal(null);
 
   constructor(){
-    this.studentService.getStudent(this.student)
+    this.studentService.getStudent(this.student);
   }
 
   public getSchedule(ev:Event){
@@ -52,7 +52,7 @@ export class HomeComponent{
     });
   }
   
-  public addNotification(event:KeyboardEvent):void{
+  public addNotification(event:Event):void{
     const text = (event.target as HTMLInputElement).value;
     this.student()?.notifications.push(text);
     this.db.updateStudentInfo(this.student()!);

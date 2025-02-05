@@ -11,12 +11,16 @@ import { HomeIcon } from '../../common/ui/home-icon';
 import { ProctorIcon } from '../../common/ui/proctor-icon';
 import { MenuIcon } from '../../common/ui/menu-icon';
 import { FromStyleService } from '../../core/services/fromStyleService';
+import {CommonModule, UpperCasePipe} from "@angular/common";
+
 
 @Component({
   selector: 'visp-nav',
   standalone: true,
   imports: [
     RouterLink,
+    CommonModule, 
+    UpperCasePipe,
     ExclamationIcon,
     AccountBoxIcon,
     SchoolIcon,

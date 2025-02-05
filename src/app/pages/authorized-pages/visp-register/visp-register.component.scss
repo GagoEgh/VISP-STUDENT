@@ -1,0 +1,107 @@
+@import "../authorized-mixin.scss";
+
+.container {
+  background-image: url('/images/sheet.png');
+  position: relative;
+
+  .register-wrapper__title {
+    text-align: center;
+    font-size: 24px;
+    color: var(--color-natural-gray);
+  }
+
+  .register-wrapper {
+    @include wrapper(450px);
+    margin: 0 auto;
+    background-color: var(--color-silver);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 10px;
+    padding: 20px 0;
+
+    @media (max-width: 769px) {
+      width: 400px;
+    }
+
+    @media (max-width: 426px) {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 90%;
+    }
+  
+    .register-wrapper__form {
+      @include wrapper__form(55%);
+      color: var(--color-natural-gray);
+  
+      @media (max-width: 426px) {
+        width: 75%;
+      }
+  
+      .register-wrapper__form-container {
+        @include wrapper__form-container(100%);
+  
+        .register-wrapper__block{
+          @include wrapper__form-container(100%);
+          gap: 5px;
+          height: 65px;
+         
+          .register-wrapper__input,
+          .register-wrapper__button {
+            padding: 10px;
+            border: none;
+            border-radius: 15px;
+    
+            &::placeholder {
+              color: var(--color-silver);
+            }
+    
+            &:focus{
+              outline: none;
+            }
+              
+            @media (max-width: 1025px) {
+              border-radius: 8px;
+            }
+
+            @media (max-width: 769px) {
+              padding: 8px;
+            }
+          }
+        }
+    
+        .wrapper__button{
+          font-size: 20px;
+          padding: 9px 0;
+  
+          @media (max-width: 1025px) {
+            padding: 8px 0;
+            font-size: 18px;
+          }
+        }
+  
+        visp-arrow-right-icon {
+          position: absolute;
+          left: 80%;
+          top: 93%;
+          width: 35px;
+
+          @media (max-width: 769px) {
+            left: 80%;
+            top:94%;
+            width: 30px;
+          }
+        }
+      }
+    }
+  }
+
+  select, select option{
+    color: var(--color-natural-gray);
+  }
+}
+
+  
+  
+  
+  
+  

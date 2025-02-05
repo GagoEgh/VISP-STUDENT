@@ -1,0 +1,25 @@
+:host{
+
+    position: relative;
+    .container{
+        position: absolute;
+        top:-120px;
+        left: 70%;
+        color: var(--color-tomato);
+        background-color: var(--color-light-gray);
+        border-radius: 10px;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        width: 300px;
+        height: 80px;
+        text-align: center;
+        padding-top: 25px;
+        transition: all ease-in-out 0.5s;
+    }
+
+    .showError{
+        transform: translate(0, 170px);
+        transition: all ease-in-out 0.5s;
+    }
+}
+
+
