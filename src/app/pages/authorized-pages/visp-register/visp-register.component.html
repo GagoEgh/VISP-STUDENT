@@ -1,4 +1,5 @@
 <div class="container">
+    <visp-error [text]="errorText" [isError]="isError"></visp-error>
     <h1 class="register-wrapper__title">Welcome Visp</h1>
     <div class="register-wrapper">
         <div class="register-wrapper__form">
@@ -35,11 +36,7 @@
                     }
                 </div>
                 <div class="register-wrapper__block">
-                    <input class="register-wrapper__input password" formControlName="password" 
-                    [type]="crossed?'password':'text'" placeholder="Password" />
-                    <visp-visibility-icon  class="register-wrapper__icon-eye" 
-                    (click)="crossed = !crossed" [crossed]="crossed">
-                    </visp-visibility-icon>
+                    <visp-password formControlName="password" ></visp-password>
                     @if(showErrorMessage('password','required')){
                         <span class="error">Please complete the field</span>
                     }@else if(showErrorMessage('password','minlength')){
@@ -47,11 +44,7 @@
                     }
                 </div>
                 <div class="register-wrapper__block">
-                    <input class="register-wrapper__input password" formControlName="confirmPassword" 
-                    [type]="crossed?'password':'text'" placeholder="Confirm Password" />
-                    <visp-visibility-icon  class="register-wrapper__icon-eye" 
-                    (click)="crossed = !crossed" [crossed]="crossed">
-                    </visp-visibility-icon>
+                    <visp-password formControlName="confirmPassword" ></visp-password>
                     @if(showErrorMessage('confirmPassword','required')){
                         <span class="error">Please complete the field</span>
                     }@else if(showErrorMessage('confirmPassword','minlength')){

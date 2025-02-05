@@ -67,23 +67,6 @@
               padding: 8px;
             }
           }
-    
-          .register-wrapper__icon-eye {
-            position: absolute;
-            left: 87%;
-            top: 10%;
-            cursor: pointer;
-
-            @media (max-width: 1025px) {
-              left: 87%;
-              top: 12%;
-            }
-
-            @media (max-width: 769px) {
-              left: 85%;
-              top: 7%;
-            }
-          }
         }
     
         .wrapper__button{
@@ -116,7 +99,6 @@
     color: var(--color-natural-gray);
   }
 }
-
 
   
   

@@ -53,23 +53,8 @@
 }
 
 .nav-open{
-    transform: translate(-1515px);
+    transform: translate(0);
     transition:all 1s ease-in-out;
-
-    @media (max-width: 1536px) {
-        transform: translate(-500px);
-        transition:all 0.5s ease-in-out;
-    }
-
-    @media (max-width: 1441px) {
-        transform: translate(-360px);
-        transition:all 0.5s ease-in-out;
-    }
-
-    @media (max-width: 1025px) {
-        transform: translate(-215px);
-        transition:all 0.5s ease-in-out;
-    }
 
     @media (max-width: 769px) {
         transform: translate(-710px);
@@ -83,31 +68,11 @@
 }
 
 .nav-close{
-    transform: translate(-1373px);
+    transform: translate(-155px);
     transition:all 0.5s ease-in-out;
-
-    @media (max-width: 1536px) {
-        transform: translate(-341px);
-        transition:all 0.5s ease-in-out;
-    }
-
-    @media (max-width: 1441px) {
-        transform: translate(-255px);
-        transition:all 0.5s ease-in-out;
-    }
-
-    @media (max-width: 1025px) {
-        transform: translate(-65px);
-        transition:all 0.5s ease-in-out;
-    }
 
     @media (max-width: 769px) {
         transform: translate(0px);
         transition:all 0.5s ease-in-out;
-    }
-
-    @media (max-width: 426px) {
-        transform: translate(0);
-        transition:all 1s ease-in-out;
     }
 }

@@ -41,7 +41,7 @@ export class HomeComponent{
   public student:WritableSignal<StudentItnerface|null>= signal(null);
 
   constructor(){
-    this.studentService.getStudent(this.student)
+    this.studentService.getStudent(this.student);
   }
 
   public getSchedule(ev:Event){

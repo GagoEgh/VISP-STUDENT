@@ -120,6 +120,25 @@ export class DatabaseService {
         });
     }
 
+    public async getAllStudent(): Promise<any> {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const store = await this.createTransaction();
+                const request = store.getAll()
+    
+                request.onsuccess = () => {
+                    resolve(request.result);
+                };
+    
+                request.onerror = () => {
+                    reject(request.error);
+                };
+            } catch (error) {
+                reject(error);
+            }
+        });
+    }
+
     public async addInDb(data: StudentItnerface): Promise<void> {
         try {
             const store = await this.createTransaction();
