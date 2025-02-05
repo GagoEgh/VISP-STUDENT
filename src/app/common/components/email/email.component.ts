@@ -1,4 +1,4 @@
-import { Component, forwardRef } from '@angular/core';
+import { Component, forwardRef} from '@angular/core';
 import {
   ControlValueAccessor,
   NG_VALUE_ACCESSOR,
@@ -31,7 +31,8 @@ export class EmailComponent implements ControlValueAccessor, Validator {
   private value: string = "";
   private touched = false;
   private onChange!: ((value: any) => void);
-  onTouched: any = () => {};
+
+  onTouched = () => {};
 
   writeValue(value: any): void {
     this.value = value;
@@ -43,12 +44,13 @@ export class EmailComponent implements ControlValueAccessor, Validator {
 
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
+    
   }
 
-  private markAsTouched(): void{
+  markAsTouched(): void{
     if(!this.touched){
-      this.touched = true;
       this.onTouched();
+      this.touched = true;
     }
   }
 
@@ -56,7 +58,6 @@ export class EmailComponent implements ControlValueAccessor, Validator {
     const input = event.target as HTMLInputElement;
     this.value = input.value;
     this.onChange(this.value);
-    this.markAsTouched();
   }
 
   validate(control: AbstractControl): ValidationErrors | null {

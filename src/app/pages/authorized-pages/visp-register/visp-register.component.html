@@ -19,7 +19,7 @@
                     }
                 </div>
                 <div class="register-wrapper__block">
-                    <input class="register-wrapper__input" formControlName="birthDate" type="text"  placeholder="Date Of Birth" />
+                    <input class="register-wrapper__input" formControlName="birthDate" [max]="createMaxDate()" type="date" placeholder="Date Of Birth" />
                     @if(showErrorMessage('birthDate','required')){
                         <span class="error">Please complete the field</span>
                     }
@@ -42,6 +42,8 @@
                     </visp-visibility-icon>
                     @if(showErrorMessage('password','required')){
                         <span class="error">Please complete the field</span>
+                    }@else if(showErrorMessage('password','minlength')){
+                        <span class="error">The minimum character went be 7</span>
                     }
                 </div>
                 <div class="register-wrapper__block">
@@ -52,7 +54,9 @@
                     </visp-visibility-icon>
                     @if(showErrorMessage('confirmPassword','required')){
                         <span class="error">Please complete the field</span>
-                    }@else if(registerForm.errors && registerForm.errors['passwordNoMatch']){
+                    }@else if(showErrorMessage('confirmPassword','minlength')){
+                        <span class="error">The minimum character went be 7</span>
+                    }@else if(isSamePassword()){
                         <span class="error">It is not same</span>
                     }
                 </div>

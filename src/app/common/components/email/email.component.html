@@ -1,6 +1,1 @@
-<input class="register-wrapper__input" type="text"  placeholder="Email" (input)="onInput($event)"/>
-<!-- @if(showErrorMessage('email','required')){
-    <span class="error">Please complete the field</span>
-}@else if(showErrorMessage('email','incorrectMail')){
-    <span class="error">Wrong syntax</span>
-} -->
+<input class="register-wrapper__input" type="text"  placeholder="Email" (input)="onInput($event)" (mouseleave)="markAsTouched()"/>
