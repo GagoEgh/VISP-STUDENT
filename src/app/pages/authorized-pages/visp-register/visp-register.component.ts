@@ -10,7 +10,6 @@ import { EmailComponent } from '../../../common/components/email/email.component
 import { PasswordComponent } from '../../../common/components/password/password.component';
 import { StudentItnerface } from '../../../core/types/student.interface';
 import { ErrorComponent } from '../../../common/components/error/error.component';
-import { debounceTime, of, take, throttleTime } from 'rxjs';
 
 @Component({
   selector: 'visp-visp-register',
@@ -66,9 +65,8 @@ export class VispRegisterComponent {
     this.cdr.detectChanges();
   }
 
-  private async findeEmailFromDb(email:string):Promise<StudentItnerface>{
-   const students = await this.db.getAllStudent();
-   return students.find((student:StudentItnerface)=>student.email===email)
+  public isErroreChange(ev:boolean){
+    this.isError = ev
   }
 
   public createMaxDate(): string {
@@ -80,6 +78,11 @@ export class VispRegisterComponent {
     const formattedDay = day < 10 ? `0${day}` : day;
   
     return `${year}-${formattedMonth}-${formattedDay}`;
+  }
+
+  private async findeEmailFromDb(email:string):Promise<StudentItnerface>{
+    const students = await this.db.getAllStudent();
+    return students.find((student:StudentItnerface)=>student.email===email)
   }
 
   private initForm():void{

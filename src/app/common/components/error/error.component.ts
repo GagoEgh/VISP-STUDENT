@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, Input} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, inject, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'visp-error',
@@ -10,6 +10,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, Input} f
 })
 export class ErrorComponent{
   private cdr = inject(ChangeDetectorRef);
+ 
   @Input()text ='';
   _isError = false;
 
@@ -17,13 +18,21 @@ export class ErrorComponent{
     return this._isError
   }
 
+
   @Input() set isError(value:boolean){
     this._isError = value;
     if(this.isError){
       setTimeout(()=>{
-        this.isError=false},2000)
+        this.isError=false;
+        this.isErroreChange.emit(this.isError);
+        this.cdr.detectChanges()
+      },2000)
     }
-    this.cdr.detectChanges()
+ 
   }
+
+  @Output()isErroreChange = new EventEmitter();
+
+ 
   
 }
