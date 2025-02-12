@@ -1,5 +1,5 @@
 <div class="container">
-    <visp-error [text]="errorText" [isError]="isError" (isErroreChange)="isErroreChange($event)"></visp-error>
+   <visp-error [(isError)]="isError" [text]="errorText"></visp-error>
     <div class="login-wrapper">
         <div class="login-wrapper__image">
         <img class="login-wrapper__img" src="images/login.png" alt="scale image" />

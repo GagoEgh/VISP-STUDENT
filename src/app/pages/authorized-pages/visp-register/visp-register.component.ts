@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject,} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, signal,} from '@angular/core';
 import { DatabaseService } from '../../../core/services/datebase';
 import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
@@ -36,7 +36,7 @@ export class VispRegisterComponent {
 
   public registerForm!: FormGroup;
   public errorText = 'This mail is used';
-  public isError = false;
+  public isError = signal(false);
 
  constructor() {
     this.initForm();
@@ -60,14 +60,16 @@ export class VispRegisterComponent {
     }
     
     if(student && this.registerForm.valid){
-      this.isError=true;
+      this.isError.set(true);
+         
+      setTimeout(()=>{
+        this.isError.set(false)
+      },1000)
     }
     this.cdr.detectChanges();
   }
 
-  public isErroreChange(ev:boolean){
-    this.isError = ev
-  }
+
 
   public createMaxDate(): string {
     const date = new Date("2019-12-31");

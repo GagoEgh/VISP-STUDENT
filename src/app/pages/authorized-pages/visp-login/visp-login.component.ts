@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, signal } from '@angular/core';
 import { ArrowRightIcon } from '../../../common/ui/arrow-right-icon';
 import {
   FormGroup,
@@ -13,6 +13,7 @@ import { EmailComponent } from '../../../common/components/email/email.component
 import { PasswordComponent } from '../../../common/components/password/password.component';
 import { emailValidator } from '../../../core/helpers/validators/emailValidator';
 import { ErrorComponent } from '../../../common/components/error/error.component';
+import { StudentDataService } from '../../../core/services/studentData.service';
 
 @Component({
   selector: 'app-visp-login',
@@ -35,10 +36,11 @@ export class LoginComponent {
   private readonly fb = inject(NonNullableFormBuilder);
   private readonly router = inject(Router);
   private cdr = inject(ChangeDetectorRef);
+  private studentData = inject(StudentDataService);
 
   public loginForm: FormGroup;
   public errorText:string = 'wrong email or password';
-  public isError = false;
+  public isError = signal(false);
 
   constructor() {
     this.loginForm = this.fb.group({
@@ -51,26 +53,24 @@ export class LoginComponent {
     return this.loginForm.controls[controlName].hasError(validatorsName) && this.loginForm.controls[controlName].touched
   }
 
-  public send(): void {
-    const student:StudentItnerface = this.loginForm.value;
-    student.img = '';
-    student.notifications=[];
+  public async send() {
+
     if (this.loginForm.valid) {
-      // this.db.addInDb(student);
-      // this.router.navigate(['home']);
-      // this.loginForm.reset();
+      const student:StudentItnerface = this.loginForm.value;
+      const studentDate = await this.studentData.LogStudent(student);
+
+      if(studentDate){
+        this.db.addInDb(studentDate);
+        this.router.navigate(['home']);
+        this.loginForm.reset();
+      }
     }
 
-    this.isError = true;
-    this.cdr.detectChanges();
+    this.isError.update((value)=>value = true);
     
+    setTimeout(()=>{
+      this.isError.set(false)
+    },1000)
   }
 
-  isErroreChange(ev:boolean){
-    this.isError = ev
-  }
-  // private async findeEmailFromDb(email:string):Promise<StudentItnerface>{
-  //   const students = await this.db.getAllStudent();
-  //   return students.find((student:StudentItnerface)=>student.email===email)
-  // }
 }
