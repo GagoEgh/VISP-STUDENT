@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, Input} from '@angular/core';
+import { ChangeDetectionStrategy, Component,input, model} from '@angular/core';
 
 @Component({
   selector: 'visp-error',
@@ -9,21 +9,8 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, Input} f
   changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class ErrorComponent{
-  private cdr = inject(ChangeDetectorRef);
-  @Input()text ='';
-  _isError = false;
 
-  get isError(){
-    return this._isError
-  }
+ public isError = model<boolean>();
+ public text = input<string>();
 
-  @Input() set isError(value:boolean){
-    this._isError = value;
-    if(this.isError){
-      setTimeout(()=>{
-        this.isError=false},2000)
-    }
-    this.cdr.detectChanges()
-  }
-  
 }

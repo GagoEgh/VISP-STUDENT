@@ -73,6 +73,27 @@ export class DatabaseService {
         
     }
 
+    public async studentLogOut(): Promise<any> {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const password = await this.getPassword();
+                const store = await this.createPasswordTransaction();
+                const request =  store.delete(password.id);
+    
+                request.onsuccess = () => {
+                    resolve(request.result);
+                    this.router.navigate(['login']);
+                };
+    
+                request.onerror = () => {
+                    reject(request.error);
+                };
+            } catch (error) {
+                reject(error);
+            }
+        });
+    }
+    
     public async getPassword(): Promise<any> {
         const store = await this.createPasswordTransaction();
         return new Promise((resolve, reject) => {
@@ -87,7 +108,6 @@ export class DatabaseService {
     }
 
     public async updateStudentInfo(student:StudentItnerface){
-        const password = await this.getPassword();
         const store = await this.createTransaction();
         const request = store.put(student);
         
@@ -102,20 +122,20 @@ export class DatabaseService {
 
     public async getStudent(): Promise<any> {
         return new Promise(async (resolve, reject) => {
-            try {
-                const password = await this.getPassword();
+            const password = await this.getPassword();
+            if(password){
                 const store = await this.createTransaction();
                 const request = store.get(password.pass);
-    
+        
                 request.onsuccess = () => {
                     resolve(request.result);
                 };
-    
+        
                 request.onerror = () => {
                     reject(request.error);
                 };
-            } catch (error) {
-                reject(error);
+            }else{
+                this.router.navigate(['login'])
             }
         });
     }
@@ -145,6 +165,7 @@ export class DatabaseService {
             const request = store.add(data);
             request.onsuccess = () => {
                 this.putPassword(data['password']) 
+                this.router.navigate(['home']);
             };
 
             request.onerror = () => {

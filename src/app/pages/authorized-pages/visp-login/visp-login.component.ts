@@ -1,43 +1,49 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { ArrowRightIcon } from '../../../common/ui/arrow-right-icon';
-import { VisibilityIcon } from '../../../common/ui/visibility-icon';
 import {
   FormGroup,
   NonNullableFormBuilder,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { DatabaseService } from '../../../core/services/datebase';
 import { StudentItnerface } from '../../../core/types/student.interface';
+import { EmailComponent } from '../../../common/components/email/email.component';
+import { PasswordComponent } from '../../../common/components/password/password.component';
+import { emailValidator } from '../../../core/helpers/validators/emailValidator';
+import { ErrorComponent } from '../../../common/components/error/error.component';
+import { StudentDataService } from '../../../core/services/studentData.service';
 
 @Component({
   selector: 'app-visp-login',
   standalone: true,
-  imports: [ArrowRightIcon, VisibilityIcon, ReactiveFormsModule,RouterOutlet, RouterLink],
+  imports: [
+    ArrowRightIcon, 
+    ReactiveFormsModule,
+    RouterOutlet, 
+    RouterLink,
+    EmailComponent,
+    PasswordComponent,
+    ErrorComponent
+  ],
   templateUrl: './visp-login.component.html',
-  styleUrls:['./visp-login.component.scss','../authorized-pages.scss']
+  styleUrls:['./visp-login.component.scss','../authorized-pages.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class LoginComponent {
   private db = inject(DatabaseService);
   private readonly fb = inject(NonNullableFormBuilder);
-  private readonly router = inject(Router)
+  private studentData = inject(StudentDataService);
+
   public loginForm: FormGroup;
-  public crossed = true;
+  public errorText:string = 'wrong email or password';
+  public isError = signal(false);
 
   constructor() {
     this.loginForm = this.fb.group({
-      password: [
-        '',
-        {
-          nonNullable: true,
-          validators: [Validators.required],
-        },
-      ],
-      name:['',{
-        nonNullable: true,
-        validators:[Validators.required]
-      }]
+      email: ['',[Validators.required,emailValidator]],
+      password: ['',[Validators.required,Validators.minLength(7)]],
     });
   }
 
@@ -45,14 +51,23 @@ export class LoginComponent {
     return this.loginForm.controls[controlName].hasError(validatorsName) && this.loginForm.controls[controlName].touched
   }
 
-  public send(): void {
-    const student:StudentItnerface = this.loginForm.value;
-    student.img = '';
-    student.notifications=[];
+  public async send() {
+
     if (this.loginForm.valid) {
-      this.db.addInDb(student);
-      this.router.navigate(['home']);
-      this.loginForm.reset();
+      const student:StudentItnerface = this.loginForm.value;
+      const studentDate = await this.studentData.LogStudent(student);
+
+      if(studentDate){
+        this.db.addInDb(studentDate);
+        this.loginForm.reset();
+      }
     }
+
+    this.isError.update((value)=>value = true);
+    
+    setTimeout(()=>{
+      this.isError.set(false)
+    },1000)
   }
+
 }

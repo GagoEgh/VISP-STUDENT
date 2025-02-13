@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject,} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, signal,} from '@angular/core';
 import { DatabaseService } from '../../../core/services/datebase';
 import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { ArrowRightIcon } from '../../../common/ui/arrow-right-icon';
 import { VisibilityIcon } from '../../../common/ui/visibility-icon';
 import { passwordMatchValidator } from '../../../core/helpers/validators/passwordMatchValidator';
@@ -10,7 +10,6 @@ import { EmailComponent } from '../../../common/components/email/email.component
 import { PasswordComponent } from '../../../common/components/password/password.component';
 import { StudentItnerface } from '../../../core/types/student.interface';
 import { ErrorComponent } from '../../../common/components/error/error.component';
-import { debounceTime, of, take, throttleTime } from 'rxjs';
 
 @Component({
   selector: 'visp-visp-register',
@@ -33,11 +32,10 @@ export class VispRegisterComponent {
   private db = inject(DatabaseService);
   private cdr = inject(ChangeDetectorRef);
   private readonly fb = inject(NonNullableFormBuilder);
-  private readonly router = inject(Router);
 
   public registerForm!: FormGroup;
   public errorText = 'This mail is used';
-  public isError = false;
+  public isError = signal(false);
 
  constructor() {
     this.initForm();
@@ -56,19 +54,17 @@ export class VispRegisterComponent {
     if(!student && this.registerForm.valid){
       const data= {...this.registerForm.value,notifications:[]}
       this.db.addInDb(data);
-      this.router.navigate(['home']);
       this.registerForm.reset()
     }
     
     if(student && this.registerForm.valid){
-      this.isError=true;
+      this.isError.set(true);
+         
+      setTimeout(()=>{
+        this.isError.set(false)
+      },1000)
     }
     this.cdr.detectChanges();
-  }
-
-  private async findeEmailFromDb(email:string):Promise<StudentItnerface>{
-   const students = await this.db.getAllStudent();
-   return students.find((student:StudentItnerface)=>student.email===email)
   }
 
   public createMaxDate(): string {
@@ -80,6 +76,11 @@ export class VispRegisterComponent {
     const formattedDay = day < 10 ? `0${day}` : day;
   
     return `${year}-${formattedMonth}-${formattedDay}`;
+  }
+
+  private async findeEmailFromDb(email:string):Promise<StudentItnerface>{
+    const students = await this.db.getAllStudent();
+    return students.find((student:StudentItnerface)=>student.email===email)
   }
 
   private initForm():void{

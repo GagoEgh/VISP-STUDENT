@@ -1,4 +1,5 @@
 <div class="container">
+   <visp-error [(isError)]="isError" [text]="errorText"></visp-error>
     <div class="login-wrapper">
         <div class="login-wrapper__image">
         <img class="login-wrapper__img" src="images/login.png" alt="scale image" />
@@ -7,23 +8,23 @@
         <h1 class="login-wrapper__title">Welcome Back</h1>
         <form class="login-wrapper__form-container" [formGroup]="loginForm" (ngSubmit)="send()">
             <div class="login-wrapper__block">
-                <input class="login-wrapper__input" formControlName="name" type="text"  placeholder="Enter name" />
-                @if(showErrorMessage('name','required')){
+                <visp-email formControlName="email" ></visp-email>
+                @if(showErrorMessage('email','required')){
                     <span class="error">Please complete the field</span>
+                }@else if(showErrorMessage('email','incorrectMail')){
+                    <span class="error">Wrong syntax</span>
                 }
             </div>
             <div class="login-wrapper__block">
-                <input class="login-wrapper__input password" formControlName="password" 
-                [type]="crossed?'password':'text'" placeholder="Enter Password" />
-                <visp-visibility-icon  class="login-wrapper__icon-eye" 
-                (click)="crossed = !crossed" [crossed]="crossed">
-                </visp-visibility-icon>
+                <visp-password formControlName="password"></visp-password>
                 @if(showErrorMessage('password','required')){
                     <span class="error">Please complete the field</span>
+                }@else if(showErrorMessage('password','minlength')){
+                    <span class="error">The minimum character went be 7</span>
                 }
             </div>
          
-            <button type="submit" class="wrapper__button"  [style.opacity]="loginForm.valid?1:0.7">
+            <button type="submit" class="wrapper__button"  [style.opacity]="loginForm.valid?1:0.7" [disabled]="!loginForm.valid">
             Let’s Go 
             </button>
             <visp-arrow-right-icon class="login-wrapper__icon-arrow"></visp-arrow-right-icon>
