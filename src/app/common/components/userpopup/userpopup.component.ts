@@ -1,6 +1,7 @@
 import { Component, EventEmitter, inject, Input, Output, signal, WritableSignal } from '@angular/core';
 import { StudentItnerface } from '../../../core/types/student.interface';
 import { StudentDataService } from '../../../core/services/studentData.service';
+import { DatabaseService } from '../../../core/services/datebase';
 
 @Component({
   selector: 'visp-userpopup',
@@ -12,6 +13,7 @@ import { StudentDataService } from '../../../core/services/studentData.service';
 export class UserpopupComponent {
   private fileToUpload!: File;
   private studentService = inject(StudentDataService);
+  private db = inject(DatabaseService)
   
   public showPicture = signal(false);
   @Input()student:WritableSignal<StudentItnerface|null> = signal(null);
@@ -44,6 +46,10 @@ export class UserpopupComponent {
     };
 
     reader.readAsDataURL(file);
+  }
+
+  public async logOut():Promise<void>{
+   await this.db.studentLogOut()
   }
 
 }

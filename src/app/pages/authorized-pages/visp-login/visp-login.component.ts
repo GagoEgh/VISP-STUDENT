@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { ArrowRightIcon } from '../../../common/ui/arrow-right-icon';
 import {
   FormGroup,
@@ -6,7 +6,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { DatabaseService } from '../../../core/services/datebase';
 import { StudentItnerface } from '../../../core/types/student.interface';
 import { EmailComponent } from '../../../common/components/email/email.component';
@@ -34,8 +34,6 @@ import { StudentDataService } from '../../../core/services/studentData.service';
 export class LoginComponent {
   private db = inject(DatabaseService);
   private readonly fb = inject(NonNullableFormBuilder);
-  private readonly router = inject(Router);
-  private cdr = inject(ChangeDetectorRef);
   private studentData = inject(StudentDataService);
 
   public loginForm: FormGroup;
@@ -61,7 +59,6 @@ export class LoginComponent {
 
       if(studentDate){
         this.db.addInDb(studentDate);
-        this.router.navigate(['home']);
         this.loginForm.reset();
       }
     }

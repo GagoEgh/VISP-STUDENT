@@ -1,4 +1,4 @@
-import { inject, Injectable, signal, WritableSignal } from "@angular/core";
+import { inject, Injectable, WritableSignal } from "@angular/core";
 import { DatabaseService } from "./datebase";
 import { StudentItnerface } from "../types/student.interface";
 
@@ -7,13 +7,7 @@ import { StudentItnerface } from "../types/student.interface";
 })
 export class StudentDataService{
     private db = inject(DatabaseService);
-    constructor(){}
-
-    // private async findeEmailFromDb(email:string):Promise<StudentItnerface>{
-    //   const students = await this.db.getAllStudent();
-    //   return students.find((student:StudentItnerface)=>student.email===email)
-    // }
-
+   
     public async LogStudent(data:StudentItnerface):Promise<StudentItnerface>{
       const students = await this.db.getAllStudent();
       return students.find((student:StudentItnerface)=> student.email===data.email && student.password === data.password)
@@ -30,17 +24,17 @@ export class StudentDataService{
     }
 
     public updateStudentDate(student:WritableSignal<StudentItnerface|null>,studentData:any,key:string){
-        student.update((currentState:StudentItnerface|null)=>{
-          if (!currentState) {
-            return null; 
-          }
-          return{
-            ...currentState,
-            [key]:studentData
-          }
-        })
+      student.update((currentState:StudentItnerface|null)=>{
+        if (!currentState) {
+          return null; 
+        }
+        return{
+          ...currentState,
+          [key]:studentData
+        }
+      })
     
-        this.db.updateStudentInfo(student()!);
-        this.getStudent(student)
-      }
+      this.db.updateStudentInfo(student()!);
+      this.getStudent(student)
+    }
 }

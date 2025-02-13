@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, signal,} from '@angular/core';
 import { DatabaseService } from '../../../core/services/datebase';
 import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { ArrowRightIcon } from '../../../common/ui/arrow-right-icon';
 import { VisibilityIcon } from '../../../common/ui/visibility-icon';
 import { passwordMatchValidator } from '../../../core/helpers/validators/passwordMatchValidator';
@@ -32,7 +32,6 @@ export class VispRegisterComponent {
   private db = inject(DatabaseService);
   private cdr = inject(ChangeDetectorRef);
   private readonly fb = inject(NonNullableFormBuilder);
-  private readonly router = inject(Router);
 
   public registerForm!: FormGroup;
   public errorText = 'This mail is used';
@@ -55,7 +54,6 @@ export class VispRegisterComponent {
     if(!student && this.registerForm.valid){
       const data= {...this.registerForm.value,notifications:[]}
       this.db.addInDb(data);
-      this.router.navigate(['home']);
       this.registerForm.reset()
     }
     
@@ -68,8 +66,6 @@ export class VispRegisterComponent {
     }
     this.cdr.detectChanges();
   }
-
-
 
   public createMaxDate(): string {
     const date = new Date("2019-12-31");
