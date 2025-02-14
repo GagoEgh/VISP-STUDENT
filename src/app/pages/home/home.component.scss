@@ -32,6 +32,16 @@
 .home{
     color: var(--color-black);
     display: flex;
+    gap:333px;
+
+    @media (max-width: 1441px) {
+        gap:250px;
+    }
+
+    @media (max-width: 1025px) {
+        gap:80px;
+    }
+    
     @media (max-width: 769px) {
      flex-direction: column;
      width: 80%;

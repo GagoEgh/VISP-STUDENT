@@ -1,0 +1,49 @@
+.container{
+    margin-top: 40px;
+    .infoForm{
+        display: flex;
+        flex-direction: column;
+        gap:11px;
+        font-size: 24px;
+        
+        .infoForm__field{
+            padding: 6px;
+            width: 620px;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+
+            .infoForm__field-label{
+                letter-spacing: 2px;
+            }
+
+            .infoForm__field-input{
+                background-color: var(--color-light-gray);
+                padding: 5px;
+                border: none;
+                outline: none;
+                font-size: 24px;
+                width: 290px;
+            }
+
+            .infoForm__field-select{
+                outline: none;
+                border: none;
+                background-color: var(--color-light-gray);
+                font-size: 24px;
+                width: 300px;
+            }
+        }
+
+        .btn{
+            cursor: pointer;
+            background-color: var(--color-dark-red);
+            color: var(--color-white);
+            letter-spacing: 2px;
+            border: none;
+            border-radius: 15px;
+            padding: 15px;
+        }
+    }
+
+}

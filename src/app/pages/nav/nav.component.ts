@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterModule } from '@angular/router';
 import { AppRoutes } from '../pages-routes';
 import { ExclamationIcon } from '../../common/ui/exclamation-icon';
 import { AccountBoxIcon } from '../../common/ui/account-box-icon';
@@ -18,6 +18,7 @@ import {CommonModule, UpperCasePipe} from "@angular/common";
   selector: 'visp-nav',
   standalone: true,
   imports: [
+    RouterModule,
     RouterLink,
     CommonModule, 
     UpperCasePipe,
