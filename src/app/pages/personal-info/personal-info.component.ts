@@ -1,9 +1,8 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, inject, signal, WritableSignal } from '@angular/core';
 import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { emailValidator } from '../../core/helpers/validators/emailValidator';
 import { StudentItnerface } from '../../core/types/student.interface';
 import { StudentDataService } from '../../core/services/studentData.service';
-import { DatabaseService } from '../../core/services/datebase';
 
 @Component({
   selector: 'visp-personal-info',
@@ -13,24 +12,16 @@ import { DatabaseService } from '../../core/services/datebase';
   styleUrl: './personal-info.component.scss',
   changeDetection:ChangeDetectionStrategy.OnPush
 })
-export class PersonalInfoComponent implements OnInit{
+export class PersonalInfoComponent {
   public personalInfo!:FormGroup;
   public student:WritableSignal<StudentItnerface|null>= signal(null);
 
-
   private fb = inject(NonNullableFormBuilder);
-  private db = inject(DatabaseService)
   private studentService = inject(StudentDataService);
   
-
   constructor(){
-    this.studentService.getStudent(this.student);
-    
-    
-  }
-
-  ngOnInit(): void {
-    this.initPersonalInfo()
+    this.initPersonalInfo();
+    this.loadStudent()
   }
 
   public save():void{
@@ -38,9 +29,20 @@ export class PersonalInfoComponent implements OnInit{
     console.log('form',this.personalInfo.valid)
   }
 
+  private loadStudent(): void {
+    this.studentService.getStudent(this.student);
+  
+    effect(() => {
+      const student = this.student();
+      if (student) {
+        this.personalInfo.patchValue(student);
+      }
+    });
+  }
+
   private initPersonalInfo(){
     this.personalInfo = this.fb.group({
-      email: [this.student()?.email,[Validators.required,emailValidator]],
+      email: ['',[Validators.required,emailValidator]],
       name:['', [Validators.required]],
       birthDate:['',[Validators.required]],
       gender:['', [Validators.required]],

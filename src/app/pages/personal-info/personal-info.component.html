@@ -2,19 +2,19 @@
     <form class="infoForm" [formGroup]="personalInfo" (ngSubmit)="save()">
         <div class="infoForm__field">
             <label class="infoForm__field-label" for="name">Student Name:</label>
-            <input  class="infoForm__field-input" id='name' type="string" formControleName="name" [value]="student()?.name">
+            <input  class="infoForm__field-input" id='name' type="string" formControlName="name">
         </div>
         <div class="infoForm__field">
             <label class="infoForm__field-label" for="email">Email:</label>
-            <input class="infoForm__field-input" id="email" type="email" formControleName="email" [value]="student()?.email">
+            <input class="infoForm__field-input" id="email" type="email" formControlName="email">
         </div>
         <div class="infoForm__field">
             <label class="infoForm__field-label" for="birth">Date Of Birth:</label>
-            <input class="infoForm__field-input" id="birth" type="date" formControleName="birthDate" [value]="student()?.birthDate">
+            <input class="infoForm__field-input" id="birth" type="date" formControlName="birthDate">
         </div>
         <div class="infoForm__field">
             <label class="infoForm__field-label" for="gender">Gender:</label>
-            <select class="infoForm__field-select" id="gender" formControlName="gender" [value]="student()?.gender">
+            <select class="infoForm__field-select" id="gender" formControlName="gender">
                 <option class="option" value="male">male</option>
                 <option class="option" value="fimale">fimale</option>
             </select>
@@ -22,17 +22,17 @@
         <div class="infoForm__field">
             <label class="infoForm__field-label" for="language">Native Languager:</label>
             <input class="infoForm__field-input" id="language" type="text"
-            placeholder="Input your native language" formControleName="nativeLanguager">
+            placeholder="Input your native language" formControlName="nativeLanguager">
         </div>
         <div class="infoForm__field">
             <label class="infoForm__field-label" for="state">Native State:</label>
             <input class="infoForm__field-input" id="state" type="text" 
-            placeholder="Input your native state" formControleName="nativeState">
+            placeholder="Input your native state" formControlName="nativeState">
         </div>
         <div class="infoForm__field">
             <label class="infoForm__field-label" for="religion">Religion:</label>
             <input class="infoForm__field-input" id="religion" type="text"
-            placeholder="Input your religion" formControleName="religion">
+            placeholder="Input your religion" formControlName="religion">
         </div>
         <div class="infoForm__field">
             <label class="infoForm__field-label" for="blood">Blood Group:</label>
@@ -48,7 +48,7 @@
                 <option  value="AB">AB-</option>
             </select>
         </div>
-        <button class="btn">save</button>
+        <button type="submit" class="btn">save</button>
     </form>
     <img src="">
 </div>

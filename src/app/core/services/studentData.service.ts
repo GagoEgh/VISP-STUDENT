@@ -16,9 +16,7 @@ export class StudentDataService{
     public getStudent(student:WritableSignal<StudentItnerface|null>):void{
         this.db.getStudent()
         .then((result)=>{
-          console.log('result',result)
           student.set(result);
-
         })
         .catch((erore)=>{
           console.log('Error',erore);
