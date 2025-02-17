@@ -26,7 +26,6 @@
             position: relative;
             width: 200px;
             
-
             .header__user-info{
                 display: flex;
                 flex-direction: column;
@@ -98,5 +97,34 @@
     @media (max-width: 769px) {
       flex-direction: column;
     }
+
+    .router-wrap{
+
+        @media (max-width: 769px) {
+            width: 80%;
+            align-self: end;
+        }
+    }
+}
+
+.up{
+
+    @media (max-width: 769px) {
+        transform: translate(0px, -440px);
+        transition:all 1s ease-in-out;
+    }
+
+    @media (max-width: 426px) {
+        transform: translate(10px, -430px);
+        transition:all 1s ease-in-out;
+    }
+}
+
+.down{
+
+    @media (max-width: 769px) {
+        transform: translate(0, 0px);
+    }
+   
 }
 

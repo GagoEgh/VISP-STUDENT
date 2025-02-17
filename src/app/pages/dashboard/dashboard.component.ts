@@ -16,10 +16,12 @@ import { StudentDataService } from '../../core/services/studentData.service';
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
+
+  public isOpen:WritableSignal<boolean> = signal(false);
   public openPopup = signal(false);
   public student:WritableSignal<StudentItnerface|null>= signal(null);
   public showPicture = signal(false);
-
+ 
   private studentService = inject(StudentDataService);
   constructor(){
     this.studentService.getStudent(this.student)
@@ -41,4 +43,7 @@ export class DashboardComponent {
     this.showPicture.set(ev);
   }
 
+  public isOpenChange(ev:boolean){
+   this.isOpen.set(ev)
+  }
 }

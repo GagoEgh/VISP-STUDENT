@@ -6,27 +6,6 @@
         display: flex;
         justify-content: center;
     } 
-
-}
-.up{
-
-    @media (max-width: 769px) {
-        transform: translate(0px, -478px);
-        transition:all 1s ease-in-out;
-    }
-
-    @media (max-width: 426px) {
-        transform: translate(10px, -460px);
-        transition:all 1s ease-in-out;
-    }
-}
-
-.down{
-
-    @media (max-width: 769px) {
-        transform: translate(0, 0px);
-    }
-   
 }
 
 .home{

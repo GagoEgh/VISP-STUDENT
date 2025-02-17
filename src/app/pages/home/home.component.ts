@@ -9,7 +9,6 @@ import {
   WritableSignal} from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ApiService } from '../../core/api-config/api-service';
-import { FromStyleService } from '../../core/services/fromStyleService';
 import { Grades } from '../../core/types/grades.interface';
 import { AttendanceResponse } from '../../core/types/attendance.interface';
 import { Schedule } from '../../core/types/schedule.interface';
@@ -28,7 +27,6 @@ import { DatabaseService } from '../../core/services/datebase';
 })
 export class HomeComponent{
   private db = inject(DatabaseService);
-  private fromStyleService = inject(FromStyleService);
   private environmentInjector = inject(EnvironmentInjector);
   private apiService = inject(ApiService);
   private studentService = inject(StudentDataService);
@@ -37,7 +35,6 @@ export class HomeComponent{
   public schedule:Signal<Schedule | undefined> = toSignal( this.apiService.getSchedule());
   public attendance:Signal<AttendanceResponse | undefined> = toSignal(this.apiService.getAttendance());
   public grades:Signal<Grades | undefined> = toSignal(this.apiService.getGrades());
-  public isOpen:WritableSignal<boolean> = this.fromStyleService.getIsOpen();
   public student:WritableSignal<StudentItnerface|null>= signal(null);
 
   constructor(){

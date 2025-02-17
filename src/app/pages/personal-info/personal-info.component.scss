@@ -17,6 +17,11 @@
             font-size: 14px;
             gap:0;
         }
+
+        @media (max-width: 769px) {
+          justify-content: center;
+          gap:30px;
+        }
        
         .infoForm__block{
         
@@ -41,6 +46,11 @@
                         font-size: 14px;
                         width: 260px;
                     }
+
+                    @media (max-width: 769px) {
+                        font-size: 12px;
+                        width: 200px;
+                    }
                  
                 }
 
@@ -54,6 +64,11 @@
                         font-size: 14px;
                         width: 270px;
                     }
+
+                    @media (max-width: 769px) {
+                        font-size: 12px;
+                        width: 210px;
+                    }
                 }
 
                 .user__picture{
@@ -63,6 +78,12 @@
                     @media (max-width: 1025px) {
                         width: 310px;
                         height: 310px;
+                    }
+
+                    @media (max-width: 1025px) {
+                        width: 200px;
+                        height: 200px;
+                        margin-top: 50px;
                     }
 
                 }
