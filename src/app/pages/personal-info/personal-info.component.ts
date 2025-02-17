@@ -50,6 +50,7 @@ export class PersonalInfoComponent {
       nativeState:[''],
       religion:[''],
       bloodGroup:[''],
+      img:['']
     })
   }
 }

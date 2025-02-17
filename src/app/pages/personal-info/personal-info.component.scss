@@ -1,38 +1,73 @@
+:host{
+    transform: translate(100px, 40px);
+    @media (max-width: 1026px) {
+        transform: translate(0, 40px);
+    }
+}
+
 .container{
-    margin-top: 40px;
     .infoForm{
         display: flex;
-        flex-direction: column;
-        gap:11px;
-        font-size: 24px;
+        font-size: 18px;
+        @media (max-width: 1441px) {
+            gap:160px;
+        }
+
+        @media (max-width: 1025px) {
+            font-size: 14px;
+            gap:0;
+        }
+       
+        .infoForm__block{
         
-        .infoForm__field{
-            padding: 6px;
-            width: 620px;
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
+            .infoForm__field{
+                padding: 6px;
+                display: flex;
+                justify-content: space-between;
+                align-items: baseline;
 
-            .infoForm__field-label{
-                letter-spacing: 2px;
+                .infoForm__field-label{
+                    letter-spacing: 2px;
+                }
+
+                .infoForm__field-input{
+                    background-color: var(--color-light-gray);
+                    padding: 5px;
+                    border: none;
+                    outline: none;
+                    font-size: 18px;
+                    width: 290px;
+                    @media (max-width: 1025px) {
+                        font-size: 14px;
+                        width: 260px;
+                    }
+                 
+                }
+
+                .infoForm__field-select{
+                    outline: none;
+                    border: none;
+                    background-color: var(--color-light-gray);
+                    font-size: 18px;
+                    width: 300px;
+                    @media (max-width: 1025px) {
+                        font-size: 14px;
+                        width: 270px;
+                    }
+                }
+
+                .user__picture{
+                    width: 350px;
+                    height: 350px;
+
+                    @media (max-width: 1025px) {
+                        width: 310px;
+                        height: 310px;
+                    }
+
+                }
             }
 
-            .infoForm__field-input{
-                background-color: var(--color-light-gray);
-                padding: 5px;
-                border: none;
-                outline: none;
-                font-size: 24px;
-                width: 290px;
-            }
-
-            .infoForm__field-select{
-                outline: none;
-                border: none;
-                background-color: var(--color-light-gray);
-                font-size: 24px;
-                width: 300px;
-            }
         }
 
         .btn{
@@ -43,6 +78,11 @@
             border: none;
             border-radius: 15px;
             padding: 15px;
+            width: 250px;
+            transform: translate(170%, 70px);
+            @media (max-width: 1025px) {
+                transform: translate(100%, 50px);
+            }
         }
     }
 
