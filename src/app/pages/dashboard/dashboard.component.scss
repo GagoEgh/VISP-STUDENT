@@ -19,7 +19,6 @@
                 width: 150px;
                 height: 40px;
             }
-         
         }
     
         .header__user{
@@ -43,7 +42,7 @@
                     border-radius: 50%;
     
                     @media (max-width: 769px) {
-                        width: 45px;
+                        width: 85px;
                     }
                 }
 
@@ -55,7 +54,6 @@
                         font-size: 16px;
                     }
                 }
-    
             }
             
             @media (max-width: 769px) {
@@ -104,13 +102,18 @@
             width: 80%;
             align-self: end;
         }
+
+        @media (max-width: 426px) {
+            width: 74%;
+            align-self: center;
+        }
     }
 }
 
 .up{
 
     @media (max-width: 769px) {
-        transform: translate(0px, -440px);
+        transform: translate(0px, -600px);
         transition:all 1s ease-in-out;
     }
 
@@ -125,6 +128,5 @@
     @media (max-width: 769px) {
         transform: translate(0, 0px);
     }
-   
 }
 

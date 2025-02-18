@@ -110,9 +110,8 @@ export class DatabaseService {
     public async updateStudentInfo(student:StudentItnerface){
         const store = await this.createTransaction();
         const request = store.put(student);
-        
         request.onsuccess = () => {
-            console.log('success')
+            console.log('success');
         };
 
         request.onerror = () => {

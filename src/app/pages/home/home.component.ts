@@ -38,7 +38,8 @@ export class HomeComponent{
   public student:WritableSignal<StudentItnerface|null>= signal(null);
 
   constructor(){
-    this.studentService.getStudent(this.student);
+    this.studentService.getStudent();
+    this.student = this.studentService.student;
   }
 
   public getSchedule(ev:Event){
@@ -53,14 +54,14 @@ export class HomeComponent{
     const text = (event.target as HTMLInputElement).value;
     this.student()?.notifications.push(text);
     this.db.updateStudentInfo(this.student()!);
-    this.studentService.getStudent(this.student);
+    this.studentService.getStudent();
     (event.target as HTMLInputElement).value = '';
 
   }
 
   public deletNotification(notifiaction:string){
     const notifications = this.student()?.notifications.filter((value)=>notifiaction !== value);
-    this.studentService.updateStudentDate(this.student,notifications,'notifications')
+    this.studentService.updateStudentDate(notifications,'notifications')
   }
 
 }

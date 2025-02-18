@@ -1,3 +1,4 @@
+<visp-success [(isSuccess)]="isSuccess" [text]="successText"></visp-success>
 <div class="container">
     <form class="infoForm" [formGroup]="personalInfo" (ngSubmit)="save()">
         <div class="infoForm__block">
@@ -53,10 +54,12 @@
         </div>
         <div class="infoForm__block">
             <div class="infoForm__field">
-                <img class="user__picture" [src]="student()?.img">
+                <input accept=".jpg, .jpeg, .png" type="file" id="img" class="user-popap-file" (change)="handleFileInput($event)">
+                <label for="img">
+                    <img class="user__picture" [src]="student()?.img">
+                </label> 
             </div>
         </div>
-   
     </form>
     <img src="">
 </div>

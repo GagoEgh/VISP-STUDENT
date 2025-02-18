@@ -22,8 +22,13 @@
     }
     
     @media (max-width: 769px) {
-     flex-direction: column;
-     width: 80%;
+        flex-direction: column;
+        width: 80%;
+        gap:30px;
+    }
+
+    @media (max-width: 426px) {
+        width: 100%;
     }
 
     .sections-content{
@@ -34,6 +39,7 @@
 
         @media (max-width: 426px) {
             align-items: normal;
+            gap:20px;
         }
        
         .home__header{
@@ -101,6 +107,9 @@
                 display: flex;
                 gap:60px;
        
+                @media (max-width: 426px) {
+                    gap:0;
+                }
                 &::after{
                     content: '';
                     position: relative;
@@ -150,7 +159,6 @@
             margin-left: 10px;
 
             @media (max-width: 769px) {
-                align-self: center;
                 margin-right: 78px;
                 margin-left: 0;
             }
@@ -203,6 +211,11 @@
                 margin-right: 118px;
             }
 
+            @media (max-width: 426px) {
+                align-self: center;
+                margin-right: 0;
+            }
+
             .home__grades__container{
                 display: flex;
                 gap:40px;
@@ -216,7 +229,6 @@
                     @media (max-width: 1025px) {
                         padding: 15px 10px;
                     }
-
     
                     .home__grades-item-sumary{
                         color: var(--color-wine-red);
@@ -253,6 +265,11 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+
+        @media (max-width: 769px) {
+            height: inherit;
+            width: inherit;
+        }
 
         .notifiaction-input-text{
             padding: 2px 8px;
