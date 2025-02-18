@@ -17,7 +17,8 @@ export class UserpopupComponent {
   
   public showPicture = signal(false);
   @Input()student:WritableSignal<StudentItnerface|null> = signal(null);
-  @Output()showPictureEvent=new EventEmitter<boolean>()
+  @Output()showPictureEvent=new EventEmitter<boolean>();
+
 
   public handleFileInput(event:Event):void {
     const fileList: FileList = (event.target as HTMLInputElement).files!;
@@ -38,7 +39,8 @@ export class UserpopupComponent {
     const reader = new FileReader();
     reader.onload = () => {
       const imageData = reader.result as string;
-      this.studentService.updateStudentDate(this.student,imageData,'img');
+      this.studentService.updateStudentDate(imageData,'img');
+      this.student = this.studentService.student;
     };
 
     reader.onerror = (error) => {

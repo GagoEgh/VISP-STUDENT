@@ -1,4 +1,4 @@
-import { Component, inject, signal, WritableSignal } from '@angular/core';
+import { Component, inject,signal, WritableSignal } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { NavComponent } from '../nav/nav.component';
 import { UserIcon } from '../../common/ui/user-icon';
@@ -11,18 +11,29 @@ import { StudentDataService } from '../../core/services/studentData.service';
 @Component({
   selector: 'visp-dashboard',
   standalone: true,
-  imports: [RouterLink,RouterOutlet,NavComponent,UserIcon,ClickOutsideDirective,CloseIcon,UserpopupComponent],
+  imports: [
+    RouterLink,
+    RouterOutlet,
+    NavComponent,
+    UserIcon,
+    ClickOutsideDirective,
+    CloseIcon,
+    UserpopupComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
-export class DashboardComponent {
+export class DashboardComponent{
+
+  public isOpen:WritableSignal<boolean> = signal(false);
   public openPopup = signal(false);
   public student:WritableSignal<StudentItnerface|null>= signal(null);
   public showPicture = signal(false);
 
   private studentService = inject(StudentDataService);
+
   constructor(){
-    this.studentService.getStudent(this.student)
+    this.studentService.getStudent();
+    this.student = this.studentService.student;
   }
 
   get userImage(): string {
@@ -41,4 +52,7 @@ export class DashboardComponent {
     this.showPicture.set(ev);
   }
 
+  public isOpenChange(ev:boolean){
+   this.isOpen.set(ev)
+  }
 }

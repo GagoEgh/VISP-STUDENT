@@ -1,0 +1,156 @@
+:host{
+    transform: translate(100px, 40px);
+    @media (max-width: 1026px) {
+        transform: translate(0, 40px);
+    }
+
+    @media (max-width: 426px) {
+        transform: translate(0px, 0px);
+    }
+}
+
+.container{
+    .infoForm{
+        display: flex;
+        margin-top: 80px;
+        gap:100px;
+        @media (max-width: 1441px) {
+            gap:160px;
+        }
+
+        @media (max-width: 1025px) {
+            gap:0;
+        }
+
+        @media (max-width: 769px) {
+          justify-content: center;
+          gap:30px;
+        }
+
+        @media (max-width: 426px) {
+          flex-direction: column;
+        }
+       
+        .infoForm__block{
+        
+            .infoForm__field{
+                display: flex;
+                justify-content: space-between;
+                align-items: baseline;
+                padding: 6px;
+
+                .infoForm__field-label{
+                    letter-spacing: 2px;
+
+                    @media (max-width: 769px) {
+                        letter-spacing: 1px;
+                    }
+                }
+
+                .infoForm__field-input{
+                    background-color: var(--color-light-gray);
+                    padding: 5px;
+                    border: none;
+                    outline: none;
+                    font-size: 18px;
+                    width: 290px;
+                    @media (max-width: 1025px) {
+                        font-size: 14px;
+                        width: 260px;
+                    }
+
+                    @media (max-width: 769px) {
+                        font-size: 12px;
+                        width: 200px;
+                    }
+
+                    @media (max-width: 426px) {
+                        font-size: 10px;
+                        width: 170px;
+                    }
+                 
+                }
+
+                .infoForm__field-select{
+                    outline: none;
+                    border: none;
+                    background-color: var(--color-light-gray);
+                    font-size: 18px;
+                    width: 300px;
+                    @media (max-width: 1025px) {
+                        font-size: 14px;
+                        width: 270px;
+                    }
+
+                    @media (max-width: 769px) {
+                        font-size: 12px;
+                        width: 210px;
+                    }
+
+                    @media (max-width: 426px) {
+                        font-size: 10px;
+                        width: 180px;
+                    }
+                }
+
+                .user-popap-file{
+                    display: none;
+                }
+
+                .user__picture{
+                    width: 300px;
+                    height: 350px;
+                    border: 5px solid var(--color-midnight-blue);
+                    border-radius: 10px;
+                    cursor: pointer;
+                    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+                    transition: all ease 1s;
+                   
+                    &:active{
+                        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+                        transition: all ease 1s;
+                    }
+
+                    @media (max-width: 1025px) {
+                        width: 310px;
+                        height: 310px;
+                    }
+
+                    @media (max-width: 1025px) {
+                        width: 200px;
+                        height: 200px;
+                        margin-top: 50px;
+                    }
+
+                    @media (max-width: 769px) {
+                        margin-top: 50px;
+                        margin-left: 40px;
+                    }
+
+                }
+            }
+
+        }
+
+        .btn{
+            cursor: pointer;
+            background-color: var(--color-dark-red);
+            color: var(--color-white);
+            letter-spacing: 2px;
+            border: none;
+            border-radius: 15px;
+            padding: 15px;
+            width: 250px;
+            transform: translate(170%, 70px);
+
+            @media (max-width: 1025px) {
+                transform: translate(100%, 50px);
+            }
+
+            @media (max-width: 426px) {
+                transform: translate(10%, 350px);
+            }
+        }
+    }
+
+}

@@ -23,8 +23,9 @@
         }
     </div>
     <div class="content">
-        <visp-nav class="content__nav"></visp-nav>
-        <router-outlet class="content__router"></router-outlet>
+        <visp-nav class="content__nav" (isOpenChange)="isOpenChange($event)"></visp-nav>
+        <div class="router-wrap" [class]="isOpen()?'up':'down'" >
+            <router-outlet class="content__router" ></router-outlet>
+        </div>
     </div>
- 
 </div>
