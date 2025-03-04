@@ -3,12 +3,11 @@ import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } fr
 import { emailValidator } from '../../core/helpers/validators/emailValidator';
 import { StudentItnerface } from '../../core/types/student.interface';
 import { StudentDataService } from '../../core/services/studentData.service';
-import { SuccessComponent } from '../../common/components/success/success.component';
 
 @Component({
   selector: 'visp-personal-info',
   standalone: true,
-  imports: [ReactiveFormsModule, SuccessComponent],
+  imports: [ReactiveFormsModule],
   templateUrl: './personal-info.component.html',
   styleUrl: './personal-info.component.scss',
   changeDetection:ChangeDetectionStrategy.OnPush
@@ -16,8 +15,6 @@ import { SuccessComponent } from '../../common/components/success/success.compon
 export class PersonalInfoComponent {
   public personalInfo!:FormGroup;
   public student:WritableSignal<StudentItnerface|null>= signal(null);
-  public isSuccess = signal(false);
-  public successText:string = 'Information is updatenig';
 
   private fb = inject(NonNullableFormBuilder);
   private studentService = inject(StudentDataService);
@@ -30,11 +27,6 @@ export class PersonalInfoComponent {
   public save():void{
     this.updateStudentState();
     this.studentService.updatePersonalInfo();
-
-    this.isSuccess.update((value)=>value = true);
-    setTimeout(()=>{
-      this.isSuccess.set(false)
-    },1000)
   }
 
   public handleFileInput(event:Event):void {

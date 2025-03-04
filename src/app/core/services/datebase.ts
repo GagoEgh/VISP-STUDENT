@@ -1,13 +1,17 @@
-import { inject, Injectable } from "@angular/core";
+import { inject, Injectable, signal } from "@angular/core";
 import { Router } from "@angular/router";
 import { StudentItnerface } from "../types/student.interface";
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class DatabaseService {
     private readonly router = inject(Router);
+    
     private db: IDBDatabase | null = null;
+    public isSuccess = signal(false);
+    public isError = signal(false);
 
     constructor() {
         this.ensureDbReady();
@@ -64,11 +68,12 @@ export class DatabaseService {
         const request = store.put(data);
         
         request.onsuccess = () => {
-            console.log('success')
+            this.isSuccess.set(true);
         };
 
         request.onerror = () => {
-            console.log('Error')
+            console.log('Error');
+            this.isError.set(true);
         }
         
     }
@@ -111,11 +116,15 @@ export class DatabaseService {
         const store = await this.createTransaction();
         const request = store.put(student);
         request.onsuccess = () => {
-            console.log('success');
+            this.isSuccess.set(true);
+            setTimeout(()=>{
+                this.isSuccess.set(false);
+            },3000)
         };
 
         request.onerror = () => {
-            console.log('Error')
+            console.log('Error');
+            this.isError.set(true)
         }
     }
 

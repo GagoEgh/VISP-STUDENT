@@ -21,6 +21,7 @@ export class StudentDataService{
         })
         .catch((erore)=>{
           console.log('Error',erore);
+          this.db.isError.set(true)
         })
     }
 
@@ -38,8 +39,8 @@ export class StudentDataService{
       this.getStudent()
     }
 
-    public async updatePersonalInfo(){
-      this.db.updateStudentInfo(this.student()!);
+   public async updatePersonalInfo(){
+     await this.db.updateStudentInfo(this.student()!);
       this.getStudent();
     }
 }
