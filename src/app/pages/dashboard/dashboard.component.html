@@ -11,14 +11,17 @@
                 </div>
         
                 @if(openPopup()){
-                    <visp-userpopup [student]="student" (showPictureEvent)="onShowPicture($event)"></visp-userpopup>
+                    <visp-userpopup [student]="student" (showPictureEvent)="onShowPicture($event)" (outsideEvent)="clickOutside()"></visp-userpopup>
                 }
             </section>
         </header>
         @if(showPicture()){
             <div class="user-image">
-                <visp-close-icon class="close" (click)="showPicture.set(false)"></visp-close-icon>
-                <img class="user-picture" [src]="userImage">
+                <div class="user-imag-container">
+                    <visp-close-icon class="close" (click)="showPicture.set(false)"></visp-close-icon>
+                    <img class="user-picture" [src]="userImage">
+                </div>
+           
             </div>
         }
     </div>

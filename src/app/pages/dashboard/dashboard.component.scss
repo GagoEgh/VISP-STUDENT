@@ -37,8 +37,8 @@
                 }
 
                 .header__user-icon{
-                    height: 78px;
-                    width: 78px;
+                    height: 90px;
+                    width: 90px;
                     border-radius: 50%;
     
                     @media (max-width: 769px) {
@@ -70,22 +70,38 @@
     .user-image{
         position: absolute;
         z-index: 999;
-        left: 40%;
-        top: 146%;
-        padding: 16px;
-        width: fit-content;
+        left: 0;
+        top: 0%;
         display: flex;
         flex-direction: column;
+        width: 99.8%;
+        background-color: #80808045;
+        height: 100vh;
 
-        .close{
-            align-self: flex-end;
-            padding-bottom: 5px;
-            cursor: pointer;
-        }
-        .user-picture{
-            width: 300px;
-            height: 300px;
-        }
+        .user-imag-container{
+            transform: translate(50%, 50%);
+            padding: 16px;
+            width: fit-content;
+            display: flex;
+            flex-direction: column;
+
+            .close{
+                align-self: flex-end;
+                cursor: pointer;
+                position: absolute;
+            }
+
+            .user-picture{
+                width: 450px;
+                height: 450px;
+                border-radius: 10px;
+
+                @media (max-width: 769px) {
+                    width: 350px;
+                    height: 350px;
+                }
+            }
+        }   
     }
 }
 
@@ -113,7 +129,7 @@
 .up{
 
     @media (max-width: 769px) {
-        transform: translate(0px, -600px);
+        transform: translate(0px, -450px);
         transition:all 1s ease-in-out;
     }
 
