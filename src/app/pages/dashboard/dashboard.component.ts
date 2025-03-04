@@ -1,7 +1,6 @@
 import { Component, inject,signal, WritableSignal } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { NavComponent } from '../nav/nav.component';
-import { UserIcon } from '../../common/ui/user-icon';
 import { StudentItnerface } from '../../core/types/student.interface';
 import { ClickOutsideDirective } from '../../core/directives/click-outside.directive';
 import { CloseIcon } from '../../common/ui/close-icon';
@@ -12,10 +11,8 @@ import { StudentDataService } from '../../core/services/studentData.service';
   selector: 'visp-dashboard',
   standalone: true,
   imports: [
-    RouterLink,
     RouterOutlet,
     NavComponent,
-    UserIcon,
     ClickOutsideDirective,
     CloseIcon,
     UserpopupComponent],
@@ -23,7 +20,6 @@ import { StudentDataService } from '../../core/services/studentData.service';
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent{
-
   public isOpen:WritableSignal<boolean> = signal(false);
   public openPopup = signal(false);
   public student:WritableSignal<StudentItnerface|null>= signal(null);
@@ -50,6 +46,7 @@ export class DashboardComponent{
 
   public onShowPicture(ev:boolean):void{
     this.showPicture.set(ev);
+
   }
 
   public isOpenChange(ev:boolean){
