@@ -6,6 +6,7 @@ import { ClickOutsideDirective } from '../../core/directives/click-outside.direc
 import { CloseIcon } from '../../common/ui/close-icon';
 import { UserpopupComponent } from '../../common/components/userpopup/userpopup.component';
 import { StudentDataService } from '../../core/services/studentData.service';
+import { SuccessComponent } from '../../common/components/success/success.component';
 
 @Component({
   selector: 'visp-dashboard',
@@ -15,7 +16,8 @@ import { StudentDataService } from '../../core/services/studentData.service';
     NavComponent,
     ClickOutsideDirective,
     CloseIcon,
-    UserpopupComponent],
+    UserpopupComponent,
+    SuccessComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })

@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, input, model } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { DatabaseService } from '../../../core/services/datebase';
 
 @Component({
   selector: 'visp-success',
@@ -9,6 +10,8 @@ import { ChangeDetectionStrategy, Component, input, model } from '@angular/core'
   changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class SuccessComponent {
- public isSuccess = model<boolean>();
- public text = input<string>();
+  public db = inject(DatabaseService)
+  public text = 'Information is updatenig';
+
+  constructor(){}
 }
